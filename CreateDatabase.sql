@@ -4,8 +4,8 @@ use NashvilleTheatreDB
 
 create table Subscription (
 	SubscriptionId int PRIMARY KEY IDENTITY (1,1) NOT NULL,
-	level int,
-	price decimal,
+	Level int,
+	Price decimal,
 )
 
 create table UserType(
@@ -25,21 +25,23 @@ create table [User] (
 
 CREATE TABLE Category (
 	CategoryId INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-	CategoryName VARCHAR
+	CategoryName VARCHAR(100)
 )
 
 CREATE TABLE Venue (
 	VenueId INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-	StreetAddress VARCHAR,
-	City VARCHAR,
-	[State] VARCHAR,
+	[Name] VARCHAR(50),
+	StreetAddress VARCHAR(100),
+	City VARCHAR(25),
+	[State] VARCHAR(25),
 	ZipCode VARCHAR(5),
 	Capacity INT
 )
 
+
 CREATE TABLE TheatreCompany (
 	TheatreCoId INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-	TheatreCompanyName VARCHAR
+	TheatreCompanyName VARCHAR(100)
 )
 
 CREATE TABLE Show (
