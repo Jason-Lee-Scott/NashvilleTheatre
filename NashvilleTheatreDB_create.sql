@@ -5,7 +5,7 @@ use NashvilleTheatreDB
 create table Subscription (
 	SubscriptionId INT PRIMARY KEY IDENTITY (1,1) NOT NULL,
 	[Level] INT,
-	Price decimal,
+	Price DECIMAL(10,2),
 )
 
 create table UserType(
