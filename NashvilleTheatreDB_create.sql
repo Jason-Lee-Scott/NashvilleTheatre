@@ -1,4 +1,4 @@
--- create database NashvilleTheatreDB
+create database NashvilleTheatreDB
 
 use NashvilleTheatreDB
 
