@@ -46,7 +46,17 @@ namespace NashvilleTheatre.Controllers
             return Ok(companies);
         }
 
-        
+<<<<<<< HEAD
+        // api/pickles/5
+        //[HttpGet("{id}")]
+        //public IActionResult GetPickleById(int id)
+        //{
+        //    var pickle = _repository.GetById(id);
+
+        //    if (pickle == null) return NotFound("No pickle with that id could be found.");
+
+        //    return Ok(pickle);
+        //}
 
         //api/Shows/3
         [HttpGet("{ShowId}")]
@@ -62,6 +72,13 @@ namespace NashvilleTheatre.Controllers
             {
                 return Ok(show);
             }
+=======
+        [HttpGet("{category}")]
+        public IActionResult GetSummaryByCategory(string category)
+        {
+            var summary = _showRepository.GetSummaryByCategory(category);
+            return Ok(summary);
+>>>>>>> master
         }
     }
 }

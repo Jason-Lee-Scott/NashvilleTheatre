@@ -7,7 +7,7 @@ namespace NashvilleTheatre.Models
 {
     public class TheatreCompany
     {
-        public int TheatreCompanyId { get; set; }
+        public int TheatreCoId { get; set; }
         public string TheatreCompanyName { get; set; }
     }
 }
