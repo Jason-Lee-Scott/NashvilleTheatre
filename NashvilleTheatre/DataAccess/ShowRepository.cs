@@ -39,6 +39,27 @@ namespace NashvilleTheatre.DataAccess
             }
         }
 
+        public IEnumerable<TheatreCompany> GetTheatreCoById(int theatreCompanyId)
+        {
+
+            var sql = @"
+                        select * from TheatreCompany
+	                    where TheatreCoId = @theatreCompanyId
+                        ";
+
+            var parameters = new
+            {
+                TheatreCompanyId = theatreCompanyId
+            };
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+
+                var theatreCoById = db.Query<TheatreCompany>(sql, parameters);
+                return theatreCoById;
+            }
+        }
+
         public CategorySummary GetSummaryByCategory(string category)
         {
             var sql = @"with category_view as(
@@ -70,15 +91,16 @@ namespace NashvilleTheatre.DataAccess
             var parameters = new
             {
                 Category = category
+
             };
 
             using (var db = new SqlConnection(ConnectionString))
             {
+
                 var summary = db.QueryFirstOrDefault<CategorySummary>(sql, parameters);
                 return summary;
             }
         }
-
 
         public Show GetShowById(int showId)
         {
@@ -94,5 +116,28 @@ namespace NashvilleTheatre.DataAccess
                 return show;
             }
         }
+
+        public List<Show> GetShowsByTheatreCo(int theatreCompanyId)
+        {
+
+            var sql = @"
+                        select * from Show
+                        join TheatreCompany on Show.TheatreCoId = TheatreCompany.TheatreCoId
+                        join ShowDateTime on Show.ShowId = ShowDateTime.ShowId
+	                        where Show.TheatreCoId = @TheatreCompanyId
+                        order by ShowDateTime";
+
+            var parameters = new
+            {
+                TheatreCompanyId = theatreCompanyId
+            };
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var showsByTheatreCo = db.Query<Show>(sql, parameters).ToList();
+                return showsByTheatreCo;
+            }
+        }
+
     }
 }
