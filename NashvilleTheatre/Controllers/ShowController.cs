@@ -46,6 +46,13 @@ namespace NashvilleTheatre.Controllers
             return Ok(companies);
         }
 
+        [HttpGet("{category}")]
+        public IActionResult GetSummaryByCategory(string category)
+        {
+            var summary = _showRepository.GetSummaryByCategory(category);
+            return Ok(summary);
+        }
+
         // api/pickles/5
         //[HttpGet("{id}")]
         //public IActionResult GetPickleById(int id)
