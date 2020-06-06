@@ -21,6 +21,7 @@ namespace NashvilleTheatre.Controllers
             _showRepository = repository;
         }
 
+        // GET: api/Show
         [HttpGet]
         public IActionResult GetAllShows()
         {
@@ -45,20 +46,19 @@ namespace NashvilleTheatre.Controllers
             return Ok(companies);
         }
 
-        [HttpGet("company/{theatreCompanyId}")]
-        public IActionResult GetTheatreCoById(int theatreCompanyId)
-        {
-            var theatreCoById = _showRepository.GetTheatreCoById(theatreCompanyId);
-            return Ok(theatreCoById);
-        }
+<<<<<<< HEAD
+        // api/pickles/5
+        //[HttpGet("{id}")]
+        //public IActionResult GetPickleById(int id)
+        //{
+        //    var pickle = _repository.GetById(id);
 
-        [HttpGet("company/{theatreCompanyId}/shows")]
-        public IActionResult GetShowsByTheatreCo(int theatreCompanyId)
-        {
-            var showsByCompany = _showRepository.GetShowsByTheatreCo(theatreCompanyId);
-            return Ok(showsByCompany);
-        }
-        
+        //    if (pickle == null) return NotFound("No pickle with that id could be found.");
+
+        //    return Ok(pickle);
+        //}
+
+        //api/Shows/3
         [HttpGet("{ShowId}")]
         public IActionResult GetShowByShowId(int showId)
         {
@@ -72,6 +72,13 @@ namespace NashvilleTheatre.Controllers
             {
                 return Ok(show);
             }
+=======
+        [HttpGet("{category}")]
+        public IActionResult GetSummaryByCategory(string category)
+        {
+            var summary = _showRepository.GetSummaryByCategory(category);
+            return Ok(summary);
+>>>>>>> master
         }
     }
 }
