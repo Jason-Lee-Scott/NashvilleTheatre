@@ -13,4 +13,14 @@ namespace NashvilleTheatre.Models
         public int CreditPrice { get; set; }
         public DateTime OrderDate { get; set; }
     }
+
+    public class ShowOrdersByUser
+    {
+        public int OrderId { get; set; }
+        public string ShowName { get; set; }
+        public string Synopsis { get; set; }
+        public int CreditCost { get; set; }
+        public DateTime ShowDateTime { get; set; }
+        public DateTime ShowOrderDate { get; set; }
+    }
 }

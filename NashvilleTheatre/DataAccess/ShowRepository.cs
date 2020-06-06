@@ -39,8 +39,6 @@ namespace NashvilleTheatre.DataAccess
             }
         }
 
-<<<<<<< HEAD
-=======
         public IEnumerable<TheatreCompany> GetTheatreCoById(int theatreCompanyId)
         {
 
@@ -52,7 +50,16 @@ namespace NashvilleTheatre.DataAccess
             var parameters = new
             {
                 TheatreCompanyId = theatreCompanyId
->>>>>>> 736e264df75adea17bc147f52260ef494d12aab0
+            };
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+
+                var theatreCoById = db.Query<TheatreCompany>(sql, parameters);
+                return theatreCoById;
+            }
+        }
+
         public CategorySummary GetSummaryByCategory(string category)
         {
             var sql = @"with category_view as(
@@ -84,15 +91,12 @@ namespace NashvilleTheatre.DataAccess
             var parameters = new
             {
                 Category = category
-<<<<<<< HEAD
-=======
 
->>>>>>> 736e264df75adea17bc147f52260ef494d12aab0
             };
 
             using (var db = new SqlConnection(ConnectionString))
             {
-<<<<<<< HEAD
+
                 var summary = db.QueryFirstOrDefault<CategorySummary>(sql, parameters);
                 return summary;
             }
@@ -110,28 +114,6 @@ namespace NashvilleTheatre.DataAccess
 
                 var show = db.QueryFirstOrDefault<Show>(sql, parameters);
                 return show;
-            }
-        }
-
-        public IEnumerable<TheatreCompany> GetTheatreCoById(int theatreCompanyId)
-        {
-
-            var sql = @"
-                        select * from TheatreCompany
-	                    where TheatreCoId = @theatreCompanyId
-                        ";
-
-            var parameters = new
-            {
-                TheatreCompanyId = theatreCompanyId
-            };
-
-            using (var db = new SqlConnection(ConnectionString))
-            {
-=======
->>>>>>> 736e264df75adea17bc147f52260ef494d12aab0
-                var theatreCoById = db.Query<TheatreCompany>(sql, parameters);
-                return theatreCoById;
             }
         }
 
@@ -154,28 +136,6 @@ namespace NashvilleTheatre.DataAccess
             {
                 var showsByTheatreCo = db.Query<Show>(sql, parameters).ToList();
                 return showsByTheatreCo;
-<<<<<<< HEAD
-=======
-
-                var summary = db.QueryFirstOrDefault<CategorySummary>(sql, parameters);
-                return summary;
-            }
-        }
-
-
-        public Show GetShowById(int showId)
-        {
-            var sql = @"select *
-                        from Show
-                        where ShowId = @showId";
-
-            using (var db = new SqlConnection(ConnectionString))
-            {
-                var parameters = new { showId = showId };
-
-                var show = db.QueryFirstOrDefault<Show>(sql, parameters);
-                return show;
->>>>>>> 736e264df75adea17bc147f52260ef494d12aab0
             }
         }
 
