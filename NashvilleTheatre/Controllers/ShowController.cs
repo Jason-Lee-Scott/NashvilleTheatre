@@ -45,5 +45,12 @@ namespace NashvilleTheatre.Controllers
             }
             return Ok(companies);
         }
+
+        [HttpGet("{category}")]
+        public IActionResult GetSummaryByCategory(string category)
+        {
+            var summary = _showRepository.GetSummaryByCategory(category);
+            return Ok(summary);
+        }
     }
 }

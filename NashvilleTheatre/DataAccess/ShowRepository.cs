@@ -38,5 +38,45 @@ namespace NashvilleTheatre.DataAccess
                 return companies;
             }
         }
+
+        public CategorySummary GetSummaryByCategory(string category)
+        {
+            var sql = @"with category_view as(
+                        select top(3) ShowName, CategoryName 
+                        from Show as sh
+                        join Category as c on sh.CategoryId = c.CategoryId
+                        where CategoryName = @Category
+                        order by ShowName
+                        ), ShowList as(
+                        select
+                           distinct  
+                            stuff((
+                                select ', ' + cv.ShowName
+                                from category_view cv
+                                where cv.ShowName = ShowName
+                                order by cv.ShowName
+                                for xml path('')
+                            ),1,2,'') as ShowList
+                        from category_view 
+                        group by ShowName
+                        ), CategorySummary as(
+                        select CategoryName, count(*) as CategoryTotal from Category as c
+                        join Show as sh on sh.CategoryId = c.CategoryId
+                        where CategoryName = @Category
+                        group by CategoryName
+                        )
+                        select * from CategorySummary, ShowList";
+
+            var parameters = new
+            {
+                Category = category
+            };
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var summary = db.QueryFirstOrDefault<CategorySummary>(sql, parameters);
+                return summary;
+            }
+        }
     }
 }
