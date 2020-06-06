@@ -17,8 +17,6 @@ namespace NashvilleTheatre.DataAccess
             ConnectionString = config.GetConnectionString("NashvilleTheatre");
         }
 
-        //const string ConnectionString = "Server=localhost;Database=NashvilleTheatreDB;Trusted_Connection=True;";
-
         public List<Show> GetAllShows()
         {
             var sql = @"select * from Show";

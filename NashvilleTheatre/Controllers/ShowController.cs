@@ -14,21 +14,18 @@ namespace NashvilleTheatre.Controllers
     [ApiController]
     public class ShowController : ControllerBase
     {
-
-        //ShowRepository _repository = new ShowRepository();
-
-        ShowRepository _repository;
+        ShowRepository _showRepository;
 
         public ShowController(ShowRepository repository)
         {
-            _repository = repository;
+            _showRepository = repository;
         }
 
         // GET: api/Show
         [HttpGet]
         public IActionResult GetAllShows()
         {
-            var shows = _repository.GetAllShows();
+            var shows = _showRepository.GetAllShows();
 
             if (!shows.Any())
             {
@@ -40,7 +37,7 @@ namespace NashvilleTheatre.Controllers
         [HttpGet("companies")]
         public IActionResult GetAllTheatreCompanies()
         {
-            var companies = _repository.GetAllTheatreCompanies();
+            var companies = _showRepository.GetAllTheatreCompanies();
 
             if (!companies.Any())
             {
