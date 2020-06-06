@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Dapper;
+using NashvilleTheatre.DataAccess;
 
 namespace NashvilleTheatre.Controllers
 {
@@ -12,6 +13,12 @@ namespace NashvilleTheatre.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
+        OrderRepository _orderRepository;
+        public OrderController(OrderRepository repository)
+        {
+            _orderRepository = repository;
+        }
+
         // GET: api/Order
         [HttpGet("subscriptions")]
         public IEnumerable<string> GetOrderSubscriptions()
