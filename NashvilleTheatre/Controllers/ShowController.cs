@@ -21,7 +21,6 @@ namespace NashvilleTheatre.Controllers
             _showRepository = repository;
         }
 
-        // GET: api/Show
         [HttpGet]
         public IActionResult GetAllShows()
         {
@@ -59,7 +58,7 @@ namespace NashvilleTheatre.Controllers
             var showsByCompany = _showRepository.GetShowsByTheatreCo(theatreCompanyId);
             return Ok(showsByCompany);
         }
-
+        
         [HttpGet("{ShowId}")]
         public IActionResult GetShowByShowId(int showId)
         {
