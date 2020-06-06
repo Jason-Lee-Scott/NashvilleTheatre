@@ -8,6 +8,6 @@ namespace NashvilleTheatre.Models
     public class TheatreCompany
     {
         public int TheatreCompanyId { get; set; }
-        public int TheatreCompanyName { get; set; }
+        public string TheatreCompanyName { get; set; }
     }
 }

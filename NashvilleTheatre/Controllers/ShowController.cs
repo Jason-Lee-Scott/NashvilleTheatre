@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Dapper;
+using NashvilleTheatre.Models;
+using NashvilleTheatre.DataAccess;
 
 namespace NashvilleTheatre.Controllers
 {
@@ -12,11 +14,39 @@ namespace NashvilleTheatre.Controllers
     [ApiController]
     public class ShowController : ControllerBase
     {
+
+        ShowRepository _repository = new ShowRepository();
+
+        //ShowRepository _repository;
+
+        //public ShowController(ShowRepository repository)
+        //{
+        //    _repository = repository;
+        //}
+
         // GET: api/Show
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult GetAllShows()
         {
-            return new string[] { "value1", "value2" };
+            var shows = _repository.GetAllShows();
+
+            if (!shows.Any())
+            {
+                return NotFound();
+            }
+            return Ok(shows);
+        }
+
+        [HttpGet("companies")]
+        public IActionResult GetAllTheatreCompanies()
+        {
+            var companies = _repository.GetAllTheatreCompanies();
+
+            if (!companies.Any())
+            {
+                return NotFound();
+            }
+            return Ok(companies);
         }
     }
 }
