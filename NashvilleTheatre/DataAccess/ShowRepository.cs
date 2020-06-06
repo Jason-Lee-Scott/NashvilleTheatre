@@ -11,13 +11,13 @@ namespace NashvilleTheatre.DataAccess
 {
     public class ShowRepository
     {
-        //string ConnectionString;
-        //public ShowRepository(IConfiguration config)
-        //{
-        //    ConnectionString = config.GetConnectionString("NashvilleTheatre");
-        //}
+        string ConnectionString;
+        public ShowRepository(IConfiguration config)
+        {
+            ConnectionString = config.GetConnectionString("NashvilleTheatre");
+        }
 
-        const string ConnectionString = "Server=localhost;Database=NashvilleTheatreDB;Trusted_Connection=True;";
+        //const string ConnectionString = "Server=localhost;Database=NashvilleTheatreDB;Trusted_Connection=True;";
 
         public List<Show> GetAllShows()
         {
@@ -38,7 +38,6 @@ namespace NashvilleTheatre.DataAccess
             {
                 var companies = db.Query<TheatreCompany>(sql).ToList();
                 return companies;
-
             }
         }
     }

@@ -15,14 +15,14 @@ namespace NashvilleTheatre.Controllers
     public class ShowController : ControllerBase
     {
 
-        ShowRepository _repository = new ShowRepository();
+        //ShowRepository _repository = new ShowRepository();
 
-        //ShowRepository _repository;
+        ShowRepository _repository;
 
-        //public ShowController(ShowRepository repository)
-        //{
-        //    _repository = repository;
-        //}
+        public ShowController(ShowRepository repository)
+        {
+            _repository = repository;
+        }
 
         // GET: api/Show
         [HttpGet]
