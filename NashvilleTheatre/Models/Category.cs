@@ -10,4 +10,11 @@ namespace NashvilleTheatre.Models
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
     }
+
+    public class CategorySummary
+    {
+        public string CategoryName { get; set; }
+        public int CategoryTotal { get; set; }
+        public string ShowList { get; set; }
+    }
 }

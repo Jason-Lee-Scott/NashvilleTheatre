@@ -39,6 +39,35 @@ namespace NashvilleTheatre.DataAccess
             }
         }
 
+<<<<<<< HEAD
+        //public Pickle GetById(int id)
+        //{
+        //    var query = @"select *
+        //                  from Pickle
+        //                  where id = @id";
+
+        //    using (var db = new SqlConnection(ConnectionString))
+        //    {
+        //        var parameters = new { Id = id };
+
+        //        var pickle = db.QueryFirstOrDefault<Pickle>(query, parameters);
+        //        return pickle;
+        //    }
+        //}
+
+        public Show GetShowById(int showId)
+        {
+            var sql = @"select *
+                        from Show
+                        where ShowId = @showId";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var parameters = new { showId = showId };
+
+                var show = db.QueryFirstOrDefault<Show>(sql, parameters);
+                return show;
+=======
         public CategorySummary GetSummaryByCategory(string category)
         {
             var sql = @"with category_view as(
@@ -76,65 +105,8 @@ namespace NashvilleTheatre.DataAccess
             {
                 var summary = db.QueryFirstOrDefault<CategorySummary>(sql, parameters);
                 return summary;
+>>>>>>> master
             }
         }
-
-        public Show GetShowById(int showId)
-        {
-            var sql = @"select *
-                        from Show
-                        where ShowId = @showId";
-
-            using (var db = new SqlConnection(ConnectionString))
-            {
-                var parameters = new { showId = showId };
-
-                var show = db.QueryFirstOrDefault<Show>(sql, parameters);
-                return show;
-            }
-        }
-
-        public IEnumerable<TheatreCompany> GetTheatreCoById(int theatreCompanyId)
-        {
-
-            var sql = @"
-                        select * from TheatreCompany
-	                    where TheatreCoId = @theatreCompanyId
-                        ";
-
-            var parameters = new
-            {
-                TheatreCompanyId = theatreCompanyId
-            };
-
-            using (var db = new SqlConnection(ConnectionString))
-            {
-                var theatreCoById = db.Query<TheatreCompany>(sql, parameters);
-                return theatreCoById;
-            }
-        }
-
-        public List<Show> GetShowsByTheatreCo(int theatreCompanyId)
-        {
-
-            var sql = @"
-                        select * from Show
-                        join TheatreCompany on Show.TheatreCoId = TheatreCompany.TheatreCoId
-                        join ShowDateTime on Show.ShowId = ShowDateTime.ShowId
-	                        where Show.TheatreCoId = @TheatreCompanyId
-                        order by ShowDateTime";
-
-            var parameters = new
-            {
-                TheatreCompanyId = theatreCompanyId
-            };
-
-            using (var db = new SqlConnection(ConnectionString))
-            {
-                var showsByTheatreCo = db.Query<Show>(sql, parameters).ToList();
-                return showsByTheatreCo;
-            }
-        }
-
     }
 }
