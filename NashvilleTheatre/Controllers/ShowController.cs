@@ -45,5 +45,12 @@ namespace NashvilleTheatre.Controllers
             }
             return Ok(companies);
         }
+
+        [HttpGet("company/{theatreCompanyId}")]
+        public IActionResult GetShowsByTheatreCo(int theatreCompanyId)
+        {
+            var showsByCompany = _showRepository.GetShowsByTheatreCo(theatreCompanyId);
+            return Ok(showsByCompany);
+        }
     }
 }
