@@ -38,5 +38,35 @@ namespace NashvilleTheatre.DataAccess
                 return companies;
             }
         }
+
+        //public Pickle GetById(int id)
+        //{
+        //    var query = @"select *
+        //                  from Pickle
+        //                  where id = @id";
+
+        //    using (var db = new SqlConnection(ConnectionString))
+        //    {
+        //        var parameters = new { Id = id };
+
+        //        var pickle = db.QueryFirstOrDefault<Pickle>(query, parameters);
+        //        return pickle;
+        //    }
+        //}
+
+        public Show GetShowById(int showId)
+        {
+            var sql = @"select *
+                        from Show
+                        where ShowId = @showId";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var parameters = new { showId = showId };
+
+                var show = db.QueryFirstOrDefault<Show>(sql, parameters);
+                return show;
+            }
+        }
     }
 }

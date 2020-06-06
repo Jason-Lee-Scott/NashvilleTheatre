@@ -45,5 +45,32 @@ namespace NashvilleTheatre.Controllers
             }
             return Ok(companies);
         }
+
+        // api/pickles/5
+        //[HttpGet("{id}")]
+        //public IActionResult GetPickleById(int id)
+        //{
+        //    var pickle = _repository.GetById(id);
+
+        //    if (pickle == null) return NotFound("No pickle with that id could be found.");
+
+        //    return Ok(pickle);
+        //}
+
+        //api/Shows/3
+        [HttpGet("{ShowId}")]
+        public IActionResult GetShowByShowId(int showId)
+        {
+            var show = _showRepository.GetShowById(showId);
+
+            if (show == null)
+            {
+                return NotFound("No show with that Id could be found.");
+            }
+            else
+            {
+                return Ok(show);
+            }
+        }
     }
 }
