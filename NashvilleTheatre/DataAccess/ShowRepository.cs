@@ -39,6 +39,26 @@ namespace NashvilleTheatre.DataAccess
             }
         }
 
+        public IEnumerable<TheatreCompany> GetTheatreCoById(int theatreCompanyId)
+        {
+
+            var sql = @"
+                        select * from TheatreCompany
+	                    where TheatreCoId = @theatreCompanyId
+                        ";
+
+            var parameters = new
+            {
+                TheatreCompanyId = theatreCompanyId
+            };
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var theatreCoById = db.Query<TheatreCompany>(sql, parameters);
+                return theatreCoById;
+            }
+        }
+
         public List<Show> GetShowsByTheatreCo(int theatreCompanyId)
         {
 
