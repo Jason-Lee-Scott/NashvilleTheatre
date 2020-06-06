@@ -21,7 +21,6 @@ namespace NashvilleTheatre.Controllers
             _showRepository = repository;
         }
 
-        // GET: api/Show
         [HttpGet]
         public IActionResult GetAllShows()
         {
@@ -46,9 +45,20 @@ namespace NashvilleTheatre.Controllers
             return Ok(companies);
         }
 
-        
+        [HttpGet("company/{theatreCompanyId}")]
+        public IActionResult GetTheatreCoById(int theatreCompanyId)
+        {
+            var theatreCoById = _showRepository.GetTheatreCoById(theatreCompanyId);
+            return Ok(theatreCoById);
+        }
 
-        //api/Shows/3
+        [HttpGet("company/{theatreCompanyId}/shows")]
+        public IActionResult GetShowsByTheatreCo(int theatreCompanyId)
+        {
+            var showsByCompany = _showRepository.GetShowsByTheatreCo(theatreCompanyId);
+            return Ok(showsByCompany);
+        }
+        
         [HttpGet("{ShowId}")]
         public IActionResult GetShowByShowId(int showId)
         {
