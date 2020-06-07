@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Dapper;
 using NashvilleTheatre.DataAccess;
 using NashvilleTheatre.Models;
+using NashvilleTheatre.Commands;
 
 namespace NashvilleTheatre.Controllers
 {
@@ -20,36 +21,25 @@ namespace NashvilleTheatre.Controllers
             _userRepository = repository;
         }
 
-        //// api/pickles
-        //[HttpPost]
-        //public IActionResult AddPickle(Pickle pickleToAdd)
-        //{
-        //    var existingPickle = _repository.GetByType(pickleToAdd.Type);
-        //    if (existingPickle == null)
-        //    {
-        //        var newPickle = _repository.Add(pickleToAdd);
-        //        return Created("", newPickle);
-        //    }
-        //    else
-        //    {
-        //        var updatedPickle = _repository.Update(pickleToAdd);
-        //        return Ok(updatedPickle);
-        //    }
-        //}
 
-        // api/users
-        [HttpPost]
-        public IActionResult AddNewUser(User userToAdd)
+        // api/user/adduser
+        [HttpPost("adduser")]
+        public IActionResult AddNewUser(AddNewUserCommand newUser)
         {
-            var existingUser = _userRepository.GetByUid(userToAdd);
+            // validate email
+            // confirm name isn't profanity
+
+            var existingUser = _userRepository.GetIdByUserName(newUser.FirstName, newUser.LastName, newUser.Email);
+
             if (existingUser == null)
             {
-                var newUser = _userRepository.Add(userToAdd);
-                return Created("", newUser);
+                var createdUser = _userRepository.AddNewUser(newUser);
+
+                return Created("", createdUser);
             }
             else
             {
-                var updatedUser = _userRepository.Update(userToAdd);
+                return BadRequest("User already exists.");
             }
         }
     }
