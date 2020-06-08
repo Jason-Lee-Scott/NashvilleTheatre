@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Dapper;
 using NashvilleTheatre.DataAccess;
+using NashvilleTheatre.Models;
+using NashvilleTheatre.Commands;
 
 namespace NashvilleTheatre.Controllers
 {
@@ -18,11 +20,27 @@ namespace NashvilleTheatre.Controllers
         {
             _userRepository = repository;
         }
-        // GET: api/User
-        [HttpGet]
-        public IEnumerable<string> Get()
+
+
+        // api/user/adduser
+        [HttpPost("adduser")]
+        public IActionResult AddNewUser(AddNewUserCommand newUser)
         {
-            return new string[] { "value1", "value2" };
+            // validate email
+            // confirm name isn't profanity
+
+            var existingUser = _userRepository.GetIdByUserName(newUser.FirstName, newUser.LastName, newUser.Email);
+
+            if (existingUser == null)
+            {
+                var createdUser = _userRepository.AddNewUser(newUser);
+
+                return Created("", createdUser);
+            }
+            else
+            {
+                return BadRequest("User already exists.");
+            }
         }
     }
 }

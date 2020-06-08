@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NashvilleTheatre.Models
+namespace NashvilleTheatre.Commands
 {
-    public class User
+    public class AddNewUserCommand
     {
-        public int Uid { get; set; }
-        public int TotalCredits { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public int SubscriptionId { get; set; }
-        public int UserTypeId { get; set; }
     }
 }
