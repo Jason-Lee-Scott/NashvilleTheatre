@@ -39,45 +39,6 @@ namespace NashvilleTheatre.DataAccess
             }
         }
 
-        public IEnumerable<SubscriptionOrder> GetAllSubscriptionOrders()
-        {
-            using (var db = new SqlConnection(ConnectionString))
-            {
-                return db.Query<SubscriptionOrder>(@"SELECT * FROM SubscriptionOrder");
-            }
-        }
-
-        public IEnumerable<SubscriptionOrder> CheckSubscriptionExistanceByUid(int uid)
-        {
-            var sql = @"SELECT [uid] FROM [SubscriptionOrder]
-                    WHERE [uid] = @uid";
-
-            using (var db = new SqlConnection(ConnectionString))
-            {
-                var parameters = new { Uid = uid };
-                var result = db.Query<SubscriptionOrder>(sql, parameters);
-                return result;
-            }
-        }
-
-        public IEnumerable<SubscriptionOrder> CreateSubscriptionOrder(int uid, int subId)
-        {
-            
-            var sql = @"
-                      INSERT INTO [SubscriptionOrder]([Uid], [SubscriptionId], [SubscriptionOrderDate])
-                        VALUES
-                        (@uid,@subId,@SqlOrderDateTime)
-                      ";
-
-            using (var db = new SqlConnection(ConnectionString))
-            {
-                string SqlOrderDateTime = CurrentTime.ToString("yyyy-MM-dd HH:mm:ss.fff");
-                var parameters = new { Uid = uid, SubId = subId, sqlOrderDateTime = SqlOrderDateTime };
-                var result = db.Query<SubscriptionOrder>(sql, parameters);
-                return result;
-            }
-        }
-
         public List<SubscriptionOrder> GetSubscriptionOrders()
         {
             var sql = "select * from SubscriptionOrder";
@@ -89,14 +50,6 @@ namespace NashvilleTheatre.DataAccess
             }
         }
 
-        public IEnumerable<SubscriptionOrder> GetAllSubscriptionOrders()
-        {
-            using (var db = new SqlConnection(ConnectionString))
-            {
-                return db.Query<SubscriptionOrder>(@"SELECT * FROM SubscriptionOrder");
-            }
-        }
-
         public IEnumerable<SubscriptionOrder> CheckSubscriptionExistanceByUid(int uid)
         {
             var sql = @"SELECT [uid] FROM [SubscriptionOrder]
@@ -112,7 +65,6 @@ namespace NashvilleTheatre.DataAccess
 
         public IEnumerable<SubscriptionOrder> CreateSubscriptionOrder(int uid, int subId)
         {
-            
             var sql = @"
                       INSERT INTO [SubscriptionOrder]([Uid], [SubscriptionId], [SubscriptionOrderDate])
                         VALUES

@@ -18,7 +18,7 @@ namespace NashvilleTheatre.Controllers
         OrderRepository _orderRepository;
         private readonly UserRepository _userRepository;
 
-        public OrderController(OrderRepository repository,UserRepository userRepository)
+        public OrderController(OrderRepository repository, UserRepository userRepository)
         {
             _orderRepository = repository;
             _userRepository = userRepository;
@@ -28,7 +28,6 @@ namespace NashvilleTheatre.Controllers
         // GET: api/order/subscriptions
         [HttpGet("subscriptions")]
         public IActionResult GetSubscriptionOrders()
-        public IActionResult GetAllOrderSubscriptions()
         {
             var subscriptions = _orderRepository.GetSubscriptionOrders();
             if (subscriptions.Count < 1)
@@ -36,17 +35,23 @@ namespace NashvilleTheatre.Controllers
                 return NotFound("Sorry, there are no subscriptions.");
             }
             return Ok(subscriptions);
-            var allSubscriptions = _orderRepository.GetAllSubscriptionOrders();
+        }
 
-            return Ok(allSubscriptions);
+        [HttpGet("{userId}")]
+        public IActionResult GetOrdersByUserId(int userId)
+        {
+            var shows = _orderRepository.GetOrdersByUserId(userId);
+            if (shows.Count < 1)
+            {
+                return NotFound("This user has not purchased any tickets.");
+            }
+            return Ok(shows);
         }
 
         //POST: api/order/subscription/{uid}/{subId}
         [HttpPost("subscription/{uid}/{subId}")]
         public IActionResult SubscriptionOrder(int uid, int subId)
-
         {
-
             var userCheck = _userRepository.GetUserByUid(uid);
             var SubscriptionCheck = _orderRepository.CheckSubscriptionExistanceByUid(uid);
             var userExists = userCheck.Any();
@@ -69,27 +74,5 @@ namespace NashvilleTheatre.Controllers
             return Forbid("Something went wrong");
         }
 
-        [HttpGet("show")]
-        public IEnumerable<string> GetOrderShows()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        [HttpGet]
-        public IEnumerable<string> GetOrderShows()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        [HttpGet("{userId}")]
-        public IActionResult GetOrdersByUserId(int userId)
-        {
-            var shows = _orderRepository.GetOrdersByUserId(userId);
-            if (shows.Count < 1)
-            {
-                return NotFound("This user has not purchased any tickets.");
-            }
-            return Ok(shows);
-        }
     }
 }
