@@ -28,7 +28,7 @@ namespace NashvilleTheatre.Controllers
 
             if (!shows.Any())
             {
-                return NotFound();
+                return NotFound("Better get some waiters rehearsing 'cuz there's no shows");
             }
             return Ok(shows);
         }
@@ -40,7 +40,7 @@ namespace NashvilleTheatre.Controllers
 
             if (!companies.Any())
             {
-                return NotFound();
+                return NotFound("Theatre is dead. There are no theatre troupes. Alas. 'twould appear that the world is no longer a stage.");
             }
             return Ok(companies);
         }
