@@ -36,5 +36,16 @@ namespace NashvilleTheatre.DataAccess
                 return orders;
             }
         }
+
+        public List<SubscriptionOrder> GetSubscriptionOrders()
+        {
+            var sql = "select * from SubscriptionOrder";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var subscriptions = db.Query<SubscriptionOrder>(sql).ToList();
+                return subscriptions;
+            }
+        }
     }
 }
