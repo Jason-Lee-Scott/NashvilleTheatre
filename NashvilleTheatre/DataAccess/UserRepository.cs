@@ -74,6 +74,28 @@ namespace NashvilleTheatre.DataAccess
         }
 
 
+        public List<ShowOrdersByUser> UserOrdersByTheatreCo(int userId, int theatreCoId)
+        {
+            var sql = @"
+                        select * from ShowOrder
+	                        join Show on Show.ShowId = ShowOrder.ShowId
+	                        join TheatreCompany on TheatreCompany.TheatreCoId = Show.TheatreCoId
+	                        join [User] on [User].Uid = ShowOrder.Uid
+		                        where [User].Uid = @userId
+		                        and TheatreCompany.TheatreCoId = @theatreCoId
+                        order by ShowOrderDate";
 
+            var parameters = new
+            {
+                TheatreCoId = theatreCoId,
+                UserId = userId
+            };
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var orders = db.Query<ShowOrdersByUser>(sql, parameters).ToList();
+                return orders;
+            }
+        }
     }
 }
