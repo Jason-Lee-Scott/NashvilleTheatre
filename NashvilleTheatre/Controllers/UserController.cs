@@ -21,6 +21,14 @@ namespace NashvilleTheatre.Controllers
             _userRepository = repository;
         }
 
+        // GET: api/user/{uid}
+        [HttpGet("{uid}")]
+        public IActionResult GetUserWithUid(int uid)
+        {
+            var user = _userRepository.GetUserByUid(uid);
+
+            return Ok(user);
+        }
 
         // api/user/adduser
         [HttpPost("adduser")]
@@ -42,5 +50,6 @@ namespace NashvilleTheatre.Controllers
                 return BadRequest("User already exists.");
             }
         }
+
     }
 }
