@@ -33,35 +33,11 @@ namespace NashvilleTheatre.Controllers
             return Ok(shows);
         }
 
-        [HttpGet("companies")]
-        public IActionResult GetAllTheatreCompanies()
-        {
-            var companies = _showRepository.GetAllTheatreCompanies();
-
-            if (!companies.Any())
-            {
-                return NotFound("Theatre is dead. There are no theatre troupes. Alas. 'twould appear that the world is no longer a stage.");
-            }
-            return Ok(companies);
-        }
-
         [HttpGet("{category}")]
         public IActionResult GetSummaryByCategory(string category)
         {
             var summary = _showRepository.GetSummaryByCategory(category);
             return Ok(summary);
-        }
-
-        [HttpGet("company/{theatreCompanyId}")]
-        public IActionResult GetTheatreCoById(int theatreCompanyId)
-        {
-            var theatreCoById = _showRepository.GetTheatreCoById(theatreCompanyId);
-            
-            if (!theatreCoById.Any())
-            {
-                return NotFound("There doesn't appear to be any Theatre Company with that specific ID in our system.");
-            }
-            return Ok(theatreCoById);
         }
 
         [HttpGet("company/{theatreCompanyId}/shows")]
@@ -72,7 +48,6 @@ namespace NashvilleTheatre.Controllers
             {
                 return NotFound("This theatre troupe doesn't appear to have hosted any shows yet.");
             }
-            
             
             return Ok(showsByCompany);
         }

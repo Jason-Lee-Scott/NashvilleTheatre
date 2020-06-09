@@ -22,15 +22,14 @@ namespace NashvilleTheatre.Controllers
         // GET: api/Order
         // assume api/order is talking about shows unless subscriptions is specified
         [HttpGet("subscriptions")]
-        public IEnumerable<string> GetOrderSubscriptions()
+        public IActionResult GetSubscriptionOrders()
         {
-            return new string[] { "value1", "value2" };
-        }
-
-        [HttpGet]
-        public IEnumerable<string> GetOrderShows()
-        {
-            return new string[] { "value1", "value2" };
+            var subscriptions = _orderRepository.GetSubscriptionOrders();
+            if (subscriptions.Count < 1)
+            {
+                return NotFound("Sorry, there are no subscriptions.");
+            }
+            return Ok(subscriptions);
         }
 
         [HttpGet("{userId}")]

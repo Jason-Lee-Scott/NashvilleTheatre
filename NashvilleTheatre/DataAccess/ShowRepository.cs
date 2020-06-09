@@ -28,17 +28,6 @@ namespace NashvilleTheatre.DataAccess
             }
         }
 
-        public List<TheatreCompany> GetAllTheatreCompanies()
-        {
-            var sql = "select * from TheatreCompany";
-
-            using (var db = new SqlConnection(ConnectionString))
-            {
-                var companies = db.Query<TheatreCompany>(sql).ToList();
-                return companies;
-            }
-        }
-
         public CategorySummary GetSummaryByCategory(string category)
         {
             var sql = @"with category_view as(
@@ -79,7 +68,6 @@ namespace NashvilleTheatre.DataAccess
             }
         }
 
-
         public Show GetShowById(int showId)
         {
             var sql = @"select *
@@ -114,26 +102,6 @@ namespace NashvilleTheatre.DataAccess
             {
                 var showsByTheatreCo = db.Query<Show>(sql, parameters).ToList();
                 return showsByTheatreCo;
-            }
-        }
-
-        public IEnumerable<TheatreCompany> GetTheatreCoById(int theatreCompanyId)
-        {
-
-            var sql = @"
-                        select * from TheatreCompany
-	                    where TheatreCoId = @theatreCompanyId
-                        ";
-
-            var parameters = new
-            {
-                TheatreCompanyId = theatreCompanyId
-            };
-
-            using (var db = new SqlConnection(ConnectionString))
-            {
-                var theatreCoById = db.Query<TheatreCompany>(sql, parameters);
-                return theatreCoById;
             }
         }
     }
