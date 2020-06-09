@@ -41,10 +41,10 @@ namespace NashvilleTheatre.Controllers
             return Ok(theatreCoById);
         }
 
-        [HttpGet("{theatreCompanyId}/orders")]
+        [HttpGet("{theatreCompanyId}/orderswithcustomers")]
         public IActionResult GetTheatreCoOrdersByTheatreCoId(int theatreCompanyId)
         {
-            var theatreById = _theatreCoRepository.GetTheatreCoOrdersById(theatreCompanyId);
+            var theatreById = _theatreCoRepository.GetTheatreCoOrdersWithCustomerInfoById(theatreCompanyId);
 
             if (!theatreById.Any())
             {
@@ -53,6 +53,17 @@ namespace NashvilleTheatre.Controllers
             return Ok(theatreById);
         }
 
+        [HttpGet("{theatreCompanyId}/orders")]
+        public IActionResult GetTheatreCompanyOrdersById(int theatreCompanyId)
+        {
+            var theatreOrders = _theatreCoRepository.GetAllTheatreOrdersById(theatreCompanyId);
 
+            if (!theatreOrders.Any())
+            {
+                return NotFound("There doesn't appear to be any Theatre Company with that specific ID in our system.");
+            }
+            return Ok(theatreOrders);
+
+        }
     }
 }

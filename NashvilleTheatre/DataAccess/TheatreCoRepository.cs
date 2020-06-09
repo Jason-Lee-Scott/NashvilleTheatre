@@ -49,7 +49,7 @@ namespace NashvilleTheatre.DataAccess
             }
         }
 
-        public IEnumerable<TheatreOrdersWithCustomers> GetTheatreCoOrdersById(int theatreCompanyId)
+        public IEnumerable<TheatreOrdersWithCustomers> GetTheatreCoOrdersWithCustomerInfoById(int theatreCompanyId)
         {
             var sql = @"SELECT TheatreCompany.*, 
                         Show.ShowId, Show.ShowName, Show.CreditCost, 
@@ -76,8 +76,29 @@ namespace NashvilleTheatre.DataAccess
             }
                                 }
 
-        
+        public IEnumerable<TheatreOrders> GetAllTheatreOrdersById(int theatreCompanyId)
+        {
+            var sql = @"SELECT TheatreCompany.*,
+                        ShowOrder.OrderId, ShowOrder.ShowOrderDate, ShowOrder.[Uid],
+                        Show.ShowId, Show.ShowName, Show.CreditCost
+                        FROM showOrder
+                        JOIN Show
+                        ON show.ShowId = ShowOrder.ShowId
+                        JOIN TheatreCompany
+                        ON TheatreCompany.TheatreCoId = Show.TheatreCoId
+                        WHERE TheatreCompany.TheatreCoId = @theatreCompanyId
+                        ORDER BY TheatreCoId;";
 
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var parameters = new
+                {
+                    TheatreCompanyId = theatreCompanyId
+                };
 
+                var theatreOrders = db.Query<TheatreOrders>(sql, parameters);
+                return theatreOrders;
+            }
+        }
     }
 }
