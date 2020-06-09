@@ -42,5 +42,18 @@ namespace NashvilleTheatre.Controllers
                 return BadRequest("User already exists.");
             }
         }
+
+        // api/user/{userid}/shows/theatrecompany/{theatrecoId}
+        [HttpGet("{userId}/shows/theatrecompany/{theatreCoId}")]
+        public IActionResult UserOrdersByTheatreCo(int userId, int theatreCoId)
+        {
+            var showsByCo = _userRepository.UserOrdersByTheatreCo(userId, theatreCoId);
+            if (!showsByCo.Any())
+            {
+                return NotFound("Looks like you haven't been to any shows by that troupe yet");
+            }
+
+            return Ok(showsByCo);
+        }
     }
 }
