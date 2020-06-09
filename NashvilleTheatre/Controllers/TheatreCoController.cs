@@ -40,5 +40,19 @@ namespace NashvilleTheatre.Controllers
             }
             return Ok(theatreCoById);
         }
+
+        [HttpGet("{theatreCompanyId}/orders")]
+        public IActionResult GetTheatreCoOrdersByTheatreCoId(int theatreCompanyId)
+        {
+            var theatreById = _theatreCoRepository.GetTheatreCoOrdersById(theatreCompanyId);
+
+            if (!theatreById.Any())
+            {
+                return NotFound("There doesn't appear to be any Theatre Company with that specific ID in our system.");
+            }
+            return Ok(theatreById);
+        }
+
+
     }
 }

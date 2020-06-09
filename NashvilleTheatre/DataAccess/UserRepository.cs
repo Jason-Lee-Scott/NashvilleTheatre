@@ -75,6 +75,16 @@ namespace NashvilleTheatre.DataAccess
         {
             var sql = "SELECT * FROM [User] WHERE [uid] = @uid";
 
+        public List<ShowOrdersByUser> UserOrdersByTheatreCo(int userId, int theatreCoId)
+        {
+            var sql = @"
+                        select * from ShowOrder
+	                        join Show on Show.ShowId = ShowOrder.ShowId
+	                        join TheatreCompany on TheatreCompany.TheatreCoId = Show.TheatreCoId
+	                        join [User] on [User].Uid = ShowOrder.Uid
+		                        where [User].Uid = @userId
+		                        and TheatreCompany.TheatreCoId = @theatreCoId
+                        order by ShowOrderDate";
             using (var db = new SqlConnection(ConnectionString))
             {
                 var parameters = new { Uid = uid };
@@ -82,6 +92,18 @@ namespace NashvilleTheatre.DataAccess
                 return result;
             }
 
+            var parameters = new
+            {
+                TheatreCoId = theatreCoId,
+                UserId = userId
+            };
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var orders = db.Query<ShowOrdersByUser>(sql, parameters).ToList();
+                return orders;
+            }
+        }
         }
 
         public IEnumerable<User> AddSubscriptionToUser(int uid, int subId)
