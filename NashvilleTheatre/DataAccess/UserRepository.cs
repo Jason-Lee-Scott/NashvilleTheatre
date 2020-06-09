@@ -75,7 +75,6 @@ namespace NashvilleTheatre.DataAccess
         {
             var sql = "SELECT * FROM [User] WHERE [uid] = @uid";
 
-
             using (var db = new SqlConnection(ConnectionString))
             {
                 var parameters = new { Uid = uid };
@@ -94,6 +93,7 @@ namespace NashvilleTheatre.DataAccess
 		                        where [User].Uid = @userId
 		                        and TheatreCompany.TheatreCoId = @theatreCoId
                         order by ShowOrderDate";
+            
 
             var parameters = new
             {
