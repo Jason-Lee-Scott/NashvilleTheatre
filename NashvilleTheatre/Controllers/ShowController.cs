@@ -28,7 +28,7 @@ namespace NashvilleTheatre.Controllers
 
             if (!shows.Any())
             {
-                return NotFound();
+                return NotFound("Better get some waiters rehearsing 'cuz there's no shows");
             }
             return Ok(shows);
         }
@@ -40,7 +40,7 @@ namespace NashvilleTheatre.Controllers
 
             if (!companies.Any())
             {
-                return NotFound();
+                return NotFound("Theatre is dead. There are no theatre troupes. Alas. 'twould appear that the world is no longer a stage.");
             }
             return Ok(companies);
         }
@@ -56,6 +56,11 @@ namespace NashvilleTheatre.Controllers
         public IActionResult GetTheatreCoById(int theatreCompanyId)
         {
             var theatreCoById = _showRepository.GetTheatreCoById(theatreCompanyId);
+            
+            if (!theatreCoById.Any())
+            {
+                return NotFound("There doesn't appear to be any Theatre Company with that specific ID in our system.");
+            }
             return Ok(theatreCoById);
         }
 
@@ -63,6 +68,12 @@ namespace NashvilleTheatre.Controllers
         public IActionResult GetShowsByTheatreCo(int theatreCompanyId)
         {
             var showsByCompany = _showRepository.GetShowsByTheatreCo(theatreCompanyId);
+            if (!showsByCompany.Any())
+            {
+                return NotFound("This theatre troupe doesn't appear to have hosted any shows yet.");
+            }
+            
+            
             return Ok(showsByCompany);
         }
         
