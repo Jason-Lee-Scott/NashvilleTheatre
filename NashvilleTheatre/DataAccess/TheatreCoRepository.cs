@@ -6,6 +6,7 @@ using Dapper;
 using Microsoft.Extensions.Configuration;
 using NashvilleTheatre.Models;
 using System.Data.SqlClient;
+using NashvilleTheatre.Commands;
 
 namespace NashvilleTheatre.DataAccess
 {
@@ -16,6 +17,7 @@ namespace NashvilleTheatre.DataAccess
         {
             ConnectionString = config.GetConnectionString("NashvilleTheatre");
         }
+
         public List<TheatreCompany> GetAllTheatreCompanies()
         {
             var sql = "select * from TheatreCompany";
@@ -26,9 +28,10 @@ namespace NashvilleTheatre.DataAccess
                 return companies;
             }
         }
+
+
         public IEnumerable<TheatreCompany> GetTheatreCoById(int theatreCompanyId)
         {
-
             var sql = @"
                         select * from TheatreCompany
 	                    where TheatreCoId = @theatreCompanyId
@@ -45,5 +48,36 @@ namespace NashvilleTheatre.DataAccess
                 return theatreCoById;
             }
         }
+
+        public IEnumerable<TheatreOrdersWithCustomers> GetTheatreCoOrdersById(int theatreCompanyId)
+        {
+            var sql = @"SELECT TheatreCompany.*, 
+                        Show.ShowId, Show.ShowName, Show.CreditCost, 
+                        ShowOrder.OrderId, ShowOrder.ShowOrderDate,
+                        ShowDateTime.ShowDateTime,
+                        [User].*
+                        FROM TheatreCompany 
+                        join Show ON show.TheatreCoId = TheatreCompany.TheatreCoId
+                        join ShowOrder ON ShowOrder.ShowId = Show.ShowId
+                        join [User] ON [User].[Uid] = ShowOrder.[Uid]
+                        join ShowDateTime ON ShowDateTime.ShowDateTimeId = ShowOrder.ShowDateTimeId
+                        WHERE TheatreCompany.TheatreCoId = @theatreCompanyId
+                        ORDER BY TheatreCompany.TheatreCompanyName";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var parameters = new
+                {
+                    TheatreCompanyId = theatreCompanyId
+                };
+
+                var ordersWithCustomers = db.Query<TheatreOrdersWithCustomers>(sql, parameters);
+                return ordersWithCustomers;
+            }
+                                }
+
+        
+
+
     }
 }
