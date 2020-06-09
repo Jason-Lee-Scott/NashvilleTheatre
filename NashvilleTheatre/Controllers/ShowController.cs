@@ -56,6 +56,11 @@ namespace NashvilleTheatre.Controllers
         public IActionResult GetTheatreCoById(int theatreCompanyId)
         {
             var theatreCoById = _showRepository.GetTheatreCoById(theatreCompanyId);
+            
+            if (!theatreCoById.Any())
+            {
+                return NotFound("There doesn't appear to be any Theatre Company with that specific ID in our system.");
+            }
             return Ok(theatreCoById);
         }
 
@@ -63,6 +68,12 @@ namespace NashvilleTheatre.Controllers
         public IActionResult GetShowsByTheatreCo(int theatreCompanyId)
         {
             var showsByCompany = _showRepository.GetShowsByTheatreCo(theatreCompanyId);
+            if (!showsByCompany.Any())
+            {
+                return NotFound("This theatre troupe doesn't appear to have hosted any shows yet.");
+            }
+            
+            
             return Ok(showsByCompany);
         }
         
