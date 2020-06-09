@@ -75,6 +75,12 @@ namespace NashvilleTheatre.Controllers
             return new string[] { "value1", "value2" };
         }
 
+        [HttpGet]
+        public IEnumerable<string> GetOrderShows()
+        {
+            return new string[] { "value1", "value2" };
+        }
+
         [HttpGet("{userId}")]
         public IActionResult GetOrdersByUserId(int userId)
         {
