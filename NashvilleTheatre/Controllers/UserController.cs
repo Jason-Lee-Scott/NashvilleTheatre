@@ -9,6 +9,12 @@ using NashvilleTheatre.DataAccess;
 using NashvilleTheatre.Models;
 using NashvilleTheatre.Commands;
 
+
+// add GET call for all users 
+// add delete user method
+// update user ERD
+
+
 namespace NashvilleTheatre.Controllers
 {
     [Route("api/user")]

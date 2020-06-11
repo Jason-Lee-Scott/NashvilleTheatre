@@ -8,6 +8,7 @@ using Dapper;
 using NashvilleTheatre.Models;
 using NashvilleTheatre.DataAccess;
 
+// write GET Call for list of all categories
 namespace NashvilleTheatre.Controllers
 {
     [Route("api/show")]
