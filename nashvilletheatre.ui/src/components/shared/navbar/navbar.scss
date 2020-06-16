@@ -1,0 +1,16 @@
+@import '../../../styles/variables';
+nav {
+  font-weight: 700;
+  font-size:14px;
+  color: $black;
+  letter-spacing: .1px;
+  a.nav-link {
+    color:$black !important;
+  }
+  a:hover {
+    color:$mainRed !important;
+  }
+}
+nav.navbar{
+  background-color:$white !important;
+}
