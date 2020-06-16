@@ -9,6 +9,10 @@ using NashvilleTheatre.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
+
+// add GET call for single order by ID
+// Talk with instructors about Orders and order data setup
+
 namespace NashvilleTheatre.Controllers
 {
     [Route("api/order")]

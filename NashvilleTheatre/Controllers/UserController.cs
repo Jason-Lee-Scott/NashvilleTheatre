@@ -9,6 +9,12 @@ using NashvilleTheatre.DataAccess;
 using NashvilleTheatre.Models;
 using NashvilleTheatre.Commands;
 
+
+// add GET call for all users 
+// add delete user method
+// update user ERD
+
+
 namespace NashvilleTheatre.Controllers
 {
     [Route("api/user")]
@@ -62,6 +68,20 @@ namespace NashvilleTheatre.Controllers
             }
 
             return Ok(showsByCo);
+        }
+
+        // api/user/allusers
+        [HttpGet("allusers")]
+        public IActionResult GetAllUsers()
+        {
+            var showAllUsers = _userRepository.GetAllUsers();
+            if (!showAllUsers.Any())
+            {
+                return NotFound(
+                    "Looks like there aren't any users yet. Better reseed your database or get a new marketing team.");
+            }
+            
+            return Ok(showAllUsers);
         }
     }
 }
