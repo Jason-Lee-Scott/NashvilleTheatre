@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NashvilleTheatre.DataAccess;
 
+// write GET Call for list of all categories
 namespace NashvilleTheatre.Controllers
 {
     [Route("api/show")]
