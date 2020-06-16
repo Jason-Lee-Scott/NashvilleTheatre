@@ -1,11 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
+import Navbar from '../components/shared/navbar/Navbar';
 import './App.scss';
 
 function App() {
   return (
     <div className="App">
-      <button type="button" class="btn btn-danger">PUSH ME</button>
+      <Navbar />
     </div>
   );
 }
