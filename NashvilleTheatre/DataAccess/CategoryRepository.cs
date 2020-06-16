@@ -67,5 +67,36 @@ namespace NashvilleTheatre.DataAccess
                 return summary;
             }
         }
+
+        public CategorySummary GetCategorySummariesNew(string category)
+        {
+            var categoryCountSql = @"Select count(*)  
+                        from Show as sh
+                        join Category as c on sh.CategoryId = c.CategoryId
+                        where CategoryName = @Category";
+
+            var sql = @"select ShowName  
+                        from Show as sh
+                        join Category as c on sh.CategoryId = c.CategoryId
+                        where CategoryName = @Category";
+
+
+            var parameters = new { Category = category };
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var shows = db.Query<ShowNameOnly>(sql, parameters);
+                var categoryCount = db.QueryFirstOrDefault<int>(categoryCountSql, parameters);
+
+                var categorySummary = new CategorySummary
+                {
+                    CategoryName = category,
+                    CategoryTotal = categoryCount,
+                    ShowList = shows.ToList()
+                };
+
+                return categorySummary;
+            }
+        }
     }
 }

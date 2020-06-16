@@ -29,7 +29,7 @@ namespace NashvilleTheatre.Controllers
         [HttpGet("{category}")]
         public IActionResult GetSummaryByCategory(string category)
         {
-            var summary = _categoryRepository.GetSummaryByCategory(category);
+            var summary = _categoryRepository.GetCategorySummariesNew(category);
             return Ok(summary);
         }
     }
