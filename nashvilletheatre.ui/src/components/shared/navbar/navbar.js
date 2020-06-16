@@ -1,20 +1,26 @@
 import React from 'react';
 import ntc_logo from '../../../images/ntc_logo_4c.png';
 import profile_icon from '../../../images/icons/profile_icon.png';
+
+import Topcategories from './Topcategories';
+import SearchBar from './SearchBar';
 import './navbar.scss';
 
 class Navbar extends React.Component {
   render() {
     return (
-        <nav className="navbar navbar-expand-lg">
+      <div>
+        <nav className="navbar navbar-expand">
           <div className="navbar brand">
             <a className="navbar-brand" href="/">
               <img src={ntc_logo} height="50" alt="NashvilleTheater.com" />
             </a>
           </div>
-          <div className="navbar-nav">
-          <p>Insert Search Component Here</p>
+          <div className="search-group">
+            <SearchBar />
+            <Topcategories/>
           </div>
+
           <div className="navbar-nav ml-auto">
             <ul className="navbar-nav justify-content-end">
               <li className="nav-item active">
@@ -29,7 +35,9 @@ class Navbar extends React.Component {
             </ul>
           </div>
         </nav>
-    );
+
+      </div>
+    )
   }
 }
 export default Navbar;
