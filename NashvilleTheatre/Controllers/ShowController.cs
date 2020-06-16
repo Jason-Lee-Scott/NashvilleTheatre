@@ -4,8 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Dapper;
-using NashvilleTheatre.Models;
 using NashvilleTheatre.DataAccess;
 
 namespace NashvilleTheatre.Controllers
@@ -31,13 +29,6 @@ namespace NashvilleTheatre.Controllers
                 return NotFound("Better get some waiters rehearsing 'cuz there's no shows");
             }
             return Ok(shows);
-        }
-
-        [HttpGet("{category}")]
-        public IActionResult GetSummaryByCategory(string category)
-        {
-            var summary = _showRepository.GetSummaryByCategory(category);
-            return Ok(summary);
         }
 
         [HttpGet("company/{theatreCompanyId}/shows")]
