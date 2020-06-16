@@ -9,6 +9,10 @@ using NashvilleTheatre.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
+
+// add GET call for single order by ID
+// Talk with instructors about Orders and order data setup
+
 namespace NashvilleTheatre.Controllers
 {
     [Route("api/order")]
@@ -72,6 +76,18 @@ namespace NashvilleTheatre.Controllers
                 return Ok(_userRepository.GetUserByUid(uid)) ;
             }
             return Forbid("Something went wrong");
+        }
+
+        //GET: api/order/showOrder/1
+        [HttpGet("showorder/{orderId}")]
+        public IActionResult ShowOrdersByOrderId(int orderId)
+        {
+            var showOrder = _orderRepository.GetAllShowOrdersByOrderId(orderId);
+            if (!showOrder.Any())
+            {
+                return NotFound("There doesn't appear to be any Theatre Company with that specific ID in our system.");
+            }
+            return Ok(showOrder);
         }
 
     }

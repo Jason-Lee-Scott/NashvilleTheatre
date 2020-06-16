@@ -15,4 +15,10 @@ namespace NashvilleTheatre.Models
         public int CreditCost { get; set; }
         public int CategoryId { get; set; }
     }
+
+    public class ShowNameOnly
+    {
+        public int ShowId { get; set; }
+        public string ShowName { get; set; }
+    }
 }

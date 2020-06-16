@@ -127,5 +127,16 @@ namespace NashvilleTheatre.DataAccess
                 return result;
             }
         }
+
+        public List<User> GetAllUsers()
+        {
+            var sql = @"select * from [User]";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var result = db.Query<User>(sql).ToList();
+                return result;
+            }
+        }
     }
 }
