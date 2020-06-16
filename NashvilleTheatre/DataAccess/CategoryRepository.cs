@@ -75,17 +75,17 @@ namespace NashvilleTheatre.DataAccess
                         join Category as c on sh.CategoryId = c.CategoryId
                         where CategoryName = @Category";
 
-            var sql = @"select ShowName  
+            var showSql = @"select top(3) ShowId, ShowName  
                         from Show as sh
                         join Category as c on sh.CategoryId = c.CategoryId
-                        where CategoryName = @Category";
-
+                        where CategoryName = @Category
+                        order by ShowName";
 
             var parameters = new { Category = category };
 
             using (var db = new SqlConnection(ConnectionString))
             {
-                var shows = db.Query<ShowNameOnly>(sql, parameters);
+                var shows = db.Query<ShowNameOnly>(showSql, parameters);
                 var categoryCount = db.QueryFirstOrDefault<int>(categoryCountSql, parameters);
 
                 var categorySummary = new CategorySummary
