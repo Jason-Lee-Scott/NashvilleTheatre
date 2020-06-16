@@ -78,5 +78,17 @@ namespace NashvilleTheatre.Controllers
             return Forbid("Something went wrong");
         }
 
+        //GET: api/order/showOrder/1
+        [HttpGet("showorder/{orderId}")]
+        public IActionResult ShowOrdersByOrderId(int orderId)
+        {
+            var showOrder = _orderRepository.GetAllShowOrdersByOrderId(orderId);
+            if (!showOrder.Any())
+            {
+                return NotFound("There doesn't appear to be any Theatre Company with that specific ID in our system.");
+            }
+            return Ok(showOrder);
+        }
+
     }
 }
