@@ -79,5 +79,21 @@ namespace NashvilleTheatre.DataAccess
                 return result;
             }
         }
+
+        public IEnumerable<ShowOrder> GetAllShowOrdersByOrderId(int orderId)
+        {
+            var sql = @"select * from ShowOrder 
+                        where orderId = @orderId
+                        order by orderId";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var parameters = new { orderId = orderId };
+                var order = db.Query<ShowOrder>(sql, parameters);
+                return order;
+            }
+        }
+
+
     }
 }
