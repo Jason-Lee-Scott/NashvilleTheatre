@@ -1,0 +1,48 @@
+--Check the Table
+SELECT * FROM [Subscription]
+--Create the Column In the Table
+--ALTER TABLE [Subscription]
+--ADD UserTypeId INT FOREIGN KEY REFERENCES UserType(UserTypeId)
+--Populate the Columns with data based on row
+--UPDATE Subscription
+--SET UserTypeId= 1
+--WHERE SubscriptionId= 1;
+--UPDATE Subscription
+--SET UserTypeId= 1
+--WHERE SubscriptionId= 2;
+--UPDATE Subscription
+--SET UserTypeId= 1
+--WHERE SubscriptionId= 3;
+--UPDATE Subscription
+--SET UserTypeId= 1
+--WHERE SubscriptionId= 4;
+--UPDATE Subscription
+--SET UserTypeId= 2
+--WHERE SubscriptionId= 5;
+----Create the Column In the Table
+--ALTER TABLE [Subscription]
+--ADD SubscriptionName varchar(20);
+--Populate the Columns with data based on row
+--UPDATE Subscription
+--SET SubscriptionName = 'Community'
+--WHERE SubscriptionId= 1;
+--UPDATE Subscription
+--SET SubscriptionName = 'Indie'
+--WHERE SubscriptionId= 2;
+--UPDATE Subscription
+--SET SubscriptionName = 'Broadway'
+--WHERE SubscriptionId= 3;
+--UPDATE Subscription
+--SET SubscriptionName = 'Hollywood'
+--WHERE SubscriptionId= 4;
+--UPDATE Subscription
+--SET SubscriptionName = 'Basic'
+--WHERE SubscriptionId= 5;
+
+select * from [user]
+--alter table [user]
+--add IsActive bit default 1 Not null;
+--alter table [user]
+--add DateCreated DateTime default GetDate() Not null;
+--alter table [user]
+--add DateDeleted DateTime null;

@@ -32,6 +32,7 @@ namespace NashvilleTheatre
             services.AddTransient<UserRepository>();
             services.AddTransient<OrderRepository>();
             services.AddTransient<TheatreCoRepository>();
+            services.AddTransient<CategoryRepository>();
             services.AddSingleton<IConfiguration>(Configuration);
         }
 
