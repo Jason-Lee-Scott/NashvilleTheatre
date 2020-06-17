@@ -14,5 +14,10 @@ namespace NashvilleTheatre.Models
         public string Email { get; set; }
         public int SubscriptionId { get; set; }
         public int UserTypeId { get; set; }
+        public bool IsActive { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateDeleted { get; set; }
+
+
     }
 }
