@@ -11,7 +11,7 @@ class SearchBar extends React.Component {
           <img src={searchIco} height="30" className="icon-inset" />
           <input
           type="text"
-          className="text-box form-control"
+          className="search-box form-control"
           id="show-search"
           placeholder="Event, play, actor, venue"
           />

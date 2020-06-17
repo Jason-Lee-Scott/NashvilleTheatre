@@ -25,13 +25,14 @@ nav.navbar{
   height: 25px;
   display: flex;
 }
-.text-box {
+  .search-box {
   border-radius: 100px;
   background-color: #efefef;
   border: none;
   padding-left:60px !important;
   height: 50px;
-  width: 900px;
+  min-width: 500px;
+  max-width: 900px;
   .text-box::placeholder {
     padding-left: 60px !important;
 }
