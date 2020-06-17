@@ -11,7 +11,7 @@ namespace NashvilleTheatre.Models
         public int ShowId { get; set; }
         public int UserId { get; set; }
         public int CreditPrice { get; set; }
-        public DateTime OrderDate { get; set; }
+        public DateTime ShowOrderDate { get; set; }
     }
 
     public class ShowOrdersByUser

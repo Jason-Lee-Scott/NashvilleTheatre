@@ -13,6 +13,7 @@ namespace NashvilleTheatre.DataAccess
     {
         string ConnectionString;
         DateTime CurrentTime = DateTime.Now;
+        private object dataRow;
 
         public OrderRepository(IConfiguration config)
         {
@@ -80,16 +81,33 @@ namespace NashvilleTheatre.DataAccess
             }
         }
 
-        public IEnumerable<ShowOrder> GetAllShowOrdersByOrderId(int orderId)
+        public IEnumerable<ShowOrder> GetShowOrderByOrderId(int orderId)
         {
             var sql = @"select * from ShowOrder 
                         where orderId = @orderId
                         order by orderId";
 
+            
+            
+
             using (var db = new SqlConnection(ConnectionString))
             {
                 var parameters = new { orderId = orderId };
                 var order = db.Query<ShowOrder>(sql, parameters);
+                return order;
+            }
+        }
+
+        public IEnumerable<SubscriptionOrder> GetSubscriptionOrderBySubscriptionOrderId(int orderId)
+        {
+            var sql = @"select * from SubscriptionOrder 
+                        where subscriptionOrderId = @orderId
+                        order by subscriptionOrderId";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var parameters = new { orderId = orderId };
+                var order = db.Query<SubscriptionOrder>(sql, parameters);
                 return order;
             }
         }
