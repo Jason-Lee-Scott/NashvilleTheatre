@@ -13,6 +13,7 @@ namespace NashvilleTheatre.DataAccess
     {
         string ConnectionString;
         DateTime CurrentTime = DateTime.Now;
+        private object dataRow;
 
         public OrderRepository(IConfiguration config)
         {
@@ -85,6 +86,9 @@ namespace NashvilleTheatre.DataAccess
             var sql = @"select * from ShowOrder 
                         where orderId = @orderId
                         order by orderId";
+
+            
+            
 
             using (var db = new SqlConnection(ConnectionString))
             {
