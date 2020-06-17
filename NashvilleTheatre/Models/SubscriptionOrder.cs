@@ -12,7 +12,7 @@ namespace NashvilleTheatre.Models
         public int Uid { get; set; }
         public int SubscriptionId { get; set; }
         public decimal Price { get; set; }
-        public DateTime ShowOrderDate { get; set; }
+        public DateTime SubscriptionOrderDate { get; set; }
     }
 
 }

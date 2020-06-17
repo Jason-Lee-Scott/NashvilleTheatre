@@ -82,13 +82,26 @@ namespace NashvilleTheatre.Controllers
         [HttpGet("showorder/{orderId}")]
         public IActionResult ShowOrdersByOrderId(int orderId)
         {
-            var showOrder = _orderRepository.GetAllShowOrdersByOrderId(orderId);
+            var showOrder = _orderRepository.GetShowOrderByOrderId(orderId);
             if (!showOrder.Any())
             {
-                return NotFound("There doesn't appear to be any Theatre Company with that specific ID in our system.");
+                return NotFound("There doesn't appear to be any show order with that specific ID in our system.");
             }
             return Ok(showOrder);
         }
+
+        // GET: api/order/subscriptionorder/1
+        [HttpGet("subscriptionorder/{orderId}")]
+        public IActionResult SubcriptionOrderByOrderId(int orderId)
+        {
+            var subscriptionOrder = _orderRepository.GetSubscriptionOrderBySubscriptionOrderId(orderId);
+            if (!subscriptionOrder.Any())
+            {
+                return NotFound("There doesn't appear to be any subscription order with that specific ID in our system.");
+            }
+            return Ok(subscriptionOrder);
+        }
+
 
     }
 }
