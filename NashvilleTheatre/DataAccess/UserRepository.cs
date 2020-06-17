@@ -138,5 +138,17 @@ namespace NashvilleTheatre.DataAccess
                 return result;
             }
         }
+
+        public User<User> DeleteUserByUid(int userId)
+        {
+            var sql = @"";
+
+            var parameters = new {}
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var result = db.Query<User>(sql, parameters)
+            }
+        }
     }
 }
