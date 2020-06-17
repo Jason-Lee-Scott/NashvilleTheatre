@@ -139,15 +139,27 @@ namespace NashvilleTheatre.DataAccess
             }
         }
 
-        public User<User> DeleteUserByUid(int userId)
+        public IEnumerable<User> DeleteUserByUid(int userId)
         {
-            var sql = @"";
+            var sql = @"
+                        select Top 1 * 
+	                        from [User]
+	                        where Uid = @UserId
+                        update [User]
+	                        set FirstName = 'X', 
+                            LastName = 'X', 
+                            Email = 'redacted@nunya.com', 
+                            DateDeleted = GETDATE(),
+                            IsActive = 0
+	                    output inserted.*
+                        where Uid = @UserId";
 
-            var parameters = new {}
+            var parameters = new {UserId = userId};
 
             using (var db = new SqlConnection(ConnectionString))
             {
-                var result = db.Query<User>(sql, parameters)
+                var result = db.Query<User>(sql, parameters);
+                return result;
             }
         }
     }

@@ -83,7 +83,9 @@ namespace NashvilleTheatre.Controllers
         [HttpPut("{userId}/deleteuser")]
         public IActionResult DeleteUserByUid(int userId)
         {
+            var deleteUser = _userRepository.DeleteUserByUid(userId);
 
+            return Ok(deleteUser);
         }
     }
 }
