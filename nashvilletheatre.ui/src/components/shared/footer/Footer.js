@@ -10,7 +10,7 @@ import insta_ico from '../../../images/icons/instagram_icon.png';
 import tw_ico from '../../../images/icons/twitter_icon.png';
 import yt_ico from '../../../images/icons/youtube_icon.png';
 
-import './Footer.scss';
+import './footer.scss';
 
 class Footer extends React.Component {
   render() {

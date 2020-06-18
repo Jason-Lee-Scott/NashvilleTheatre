@@ -1,6 +1,6 @@
 import React from 'react';
 import arrow_btn from '../../../images/icons/next_icon.png'
-import './Footer.scss';
+import './footer.scss';
 
 class Newsletter extends React.Component {
   render() {
