@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from '../components/shared/navbar/navbar';
-import Footer from '../components/shared/footer/Footer';
+import Navbar from '../components/shared/Navbar/Navbar';
+import Footer from '../components/shared/Footer/Footer';
 import './App.scss';
 
 function App() {
