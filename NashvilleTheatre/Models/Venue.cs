@@ -10,5 +10,6 @@ namespace NashvilleTheatre.Models
         public int VenueId { get; set; }
         public string VenueAddress { get; set; }
         public int Capacity { get; set; }
+        public string VenueImageUrl { get; set; }
     }
 }
