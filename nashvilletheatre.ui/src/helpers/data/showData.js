@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { baseUrl } from '../../apiKeys.json';
+import { baseUrl } from '../apiKeys.json';
 
 const getAllShows = () => new Promise((resolve, reject) => {
     axios.get(`${baseUrl}/api/show`).then((result) => {

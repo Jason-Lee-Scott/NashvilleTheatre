@@ -4,7 +4,7 @@ import profile_icon from '../../../images/icons/profile_icon.png';
 
 import Topcategories from './Topcategories';
 import SearchBar from './SearchBar';
-import './navbar.scss';
+import './Navbar.scss';
 
 class Navbar extends React.Component {
   render() {

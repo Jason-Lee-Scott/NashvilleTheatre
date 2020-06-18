@@ -1,6 +1,6 @@
 import React from 'react';
 import searchIco from '../../../images/icons/search_icon.png'
-import './navbar.scss';
+import './Navbar.scss';
 
 class SearchBar extends React.Component {
   render() {

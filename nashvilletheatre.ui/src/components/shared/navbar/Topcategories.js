@@ -1,5 +1,5 @@
 import React from 'react';
-import './navbar.scss';
+import './Navbar.scss';
 
 class Topcategories extends React.Component {
   render() {
