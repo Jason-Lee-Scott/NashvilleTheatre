@@ -10,5 +10,8 @@ namespace NashvilleTheatre.Models
         public int SubscriptionId { get; set; }
         public int Level { get; set; }
         public decimal Price { get; set; }
+        public int Credits { get; set; }
+        public int UserTypeId { get; set; }
+        public string SubscriptionName { get; set; }
     }
 }

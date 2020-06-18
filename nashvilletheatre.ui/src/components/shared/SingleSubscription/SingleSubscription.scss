@@ -1,0 +1,50 @@
+@import '../../../styles/variables';
+
+.SingleSubscription {
+  margin:  2% 3%;
+  padding: 1%;
+  min-width: 20%;
+  color: $black;
+  overflow: hidden;
+  h2 {
+    font-size: 2em;
+    font-weight: bold;
+    font-stretch: expanded;
+  }
+  .clip-circle-top {
+    width: 70%;
+    height: 84px;
+    border-radius: 100% 100% 100%;
+    background-color: $black;
+    margin-top:-10%;
+    transform: translate(20%, -40%);
+  }
+  .clip-circle-bottom {
+    width: 70%;
+    height: 84px;
+    border-radius: 100% 100% 100%;
+    background-color: $black;
+    margin-top: 0;
+    transform: translate(20%, 60%);
+  }
+  h2, h5, h6, p {
+    padding: 2% 6%;
+    margin: 0 6%;
+  }
+}
+
+#Community {
+  background-color: $community;
+}
+
+#Indie {
+  background-color: $indie;
+}
+
+#Broadway {
+  background-color: $broadway;
+}
+
+#Hollywood {
+  background-color: $hollywood;
+}
