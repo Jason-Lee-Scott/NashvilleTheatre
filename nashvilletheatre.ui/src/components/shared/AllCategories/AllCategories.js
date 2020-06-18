@@ -14,7 +14,7 @@ class AllCategories extends React.Component {
 
   render() {
     const { categories } = this.state;
-    const cat = categories.map((category) => <Category key={category.id} category={category} />);
+    const cat = categories.map((category) => <Category key={category.categoryId} category={category} />);
     return (
       <div className="category-links AllCategories">
         <ul className="nav justify-content-center">

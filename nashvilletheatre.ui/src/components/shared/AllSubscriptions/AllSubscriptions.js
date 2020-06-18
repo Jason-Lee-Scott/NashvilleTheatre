@@ -17,7 +17,7 @@ class AllSubscriptions extends React.Component {
 
   render() {
     const { subscriptions } = this.state;
-    const single = subscriptions.map((subscript) => <SingleSubscription key={subscript.id} subscript={subscript} />)
+    const single = subscriptions.map((subscription) => <SingleSubscription key={subscription.subscriptionId} subscription={subscription} />)
     return (
       <div className="AllSubscriptions">
         <h3 className="subscribe-header">GET ALL ACCESS PASS TO NASHVILLE THEATRE</h3>

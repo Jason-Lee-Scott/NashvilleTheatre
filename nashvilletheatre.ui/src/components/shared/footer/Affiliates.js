@@ -17,7 +17,7 @@ class Affiliates extends React.Component {
     const { theatres } = this.state;
     return (
       <div className="d-flex flex-wrap align-content-center justify-content-between">
-        {theatres.map((theatre) => <div clssName="logo-box"><img src={theatre.theatreCoImageUrl} alt={theatre.theatreCompanyName} className="white-out"/></div>)}
+        {theatres.map((theatre) => <div key={theatre.theatreCoId} className="logo-box"><img src={theatre.theatreCoImageUrl} alt={theatre.theatreCompanyName} className="white-out"/></div>)}
       </div>
     );
   }
