@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../components/shared/navbar/Navbar';
+import Navbar from '../components/shared/navbar/navbar';
 import Footer from '../components/shared/footer/Footer';
 import './App.scss';
 
