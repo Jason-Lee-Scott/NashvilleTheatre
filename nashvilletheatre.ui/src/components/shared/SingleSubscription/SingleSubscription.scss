@@ -6,10 +6,17 @@
   min-width: 20%;
   color: $black;
   overflow: hidden;
-  h2 {
-    font-size: 2em;
+  h1 {
+    font-size: 4em;
+    color: $mainRed;
+  }
+  h4 {
     font-weight: bold;
-    font-stretch: expanded;
+    text-transform: capitalize !important;
+  }
+  p {
+    font-size: small;
+    color: rgb(48, 47, 47);
   }
   .clip-circle-top {
     width: 70%;
@@ -27,7 +34,7 @@
     margin-top: 0;
     transform: translate(20%, 60%);
   }
-  h2, h5, h6, p {
+  h1, h4, h6, p {
     padding: 2% 6%;
     margin: 0 6%;
   }
