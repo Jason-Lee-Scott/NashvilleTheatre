@@ -33,11 +33,12 @@ namespace NashvilleTheatre
                     builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin())
             );
 
-            services.AddTransient<ShowRepository>();
-            services.AddTransient<UserRepository>();
-            services.AddTransient<OrderRepository>();
-            services.AddTransient<TheatreCoRepository>();
             services.AddTransient<CategoryRepository>();
+            services.AddTransient<OrderRepository>();
+            services.AddTransient<ShowRepository>();
+            services.AddTransient<SubscriptionRepository>();
+            services.AddTransient<TheatreCoRepository>();
+            services.AddTransient<UserRepository>();
             services.AddSingleton<IConfiguration>(Configuration);
         }
 

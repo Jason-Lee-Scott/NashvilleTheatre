@@ -9,5 +9,6 @@ namespace NashvilleTheatre.Models
     {
         public int TheatreCoId { get; set; }
         public string TheatreCompanyName { get; set; }
+        public string TheatreCoImageUrl { get; set; }
     }
 }

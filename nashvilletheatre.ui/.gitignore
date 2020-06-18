@@ -22,5 +22,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-apiKeys.json
+
+
 package-lock.json
+
+src/helpers/apiKeys.json
+

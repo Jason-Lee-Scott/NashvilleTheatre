@@ -3,6 +3,7 @@ import Newsletter from './Newsletter';
 import Affiliates from './Affiliates';
 
 import AllCategories from '../AllCategories/AllCategories';
+import AllSubscriptions from '../AllSubscriptions/AllSubscriptions';
 
 import ntc_logo from '../../../images/ntc_logo_wht.png';
 import fb_ico from '../../../images/icons/facebook_icon.png';
@@ -23,6 +24,10 @@ class Footer extends React.Component {
 
           <div className="affiliate-group">
             <Affiliates />
+          </div>
+
+          <div className="">
+            <AllSubscriptions />
           </div>
 
         </div>
