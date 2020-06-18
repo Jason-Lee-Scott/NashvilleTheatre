@@ -28,6 +28,11 @@ namespace NashvilleTheatre
         {
             services.AddControllers();
 
+            services.AddCors(options =>
+                options.AddPolicy("ItsAllGood",
+                    builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin())
+            );
+
             services.AddTransient<ShowRepository>();
             services.AddTransient<UserRepository>();
             services.AddTransient<OrderRepository>();
@@ -47,6 +52,8 @@ namespace NashvilleTheatre
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("ItsAllGood");
 
             app.UseAuthorization();
 
