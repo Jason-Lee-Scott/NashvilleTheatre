@@ -61,9 +61,11 @@ footer {
   margin: 30px 0;
   .logo-box {
     margin: 5px;
-    padding: 50px;
-    background-color: $indie;
   }
+  img {
+    width: 200px;
+  }
+  .white-out {filter: invert(1000%) sepia(1%) saturate(1%) hue-rotate(1deg) brightness(1000%) contrast(80%);}
 }
 
 .newsletter {
