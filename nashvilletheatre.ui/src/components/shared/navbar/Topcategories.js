@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './navbar.scss';
 
 class Topcategories extends React.Component {
@@ -8,16 +9,16 @@ class Topcategories extends React.Component {
         <div className="nav mr-auto">
         <ul className="nav">
           <li className="nav-item">
-            <a className="nav-link active" href="#">Comedy</a>
+            <Link className="nav-link" to="/category/1">Comedy</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Tragedy</a>
+            <Link className="nav-link" to="/category/2">Tragedy</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Musical</a>
+            <Link className="nav-link" to="/category/3">Drama</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Stand Up</a>
+            <Link className="nav-link" to="/category/4">Musical</Link>
           </li>
         </ul>
       </div>

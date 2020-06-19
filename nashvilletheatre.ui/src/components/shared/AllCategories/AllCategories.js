@@ -1,6 +1,6 @@
 import React from 'react';
 import Category from '../Category/Category';
-import {getAllCategories} from '../../../helpers/data/categoryData';
+import {getAllCategories} from '../../../helpers/data/CategoryData';
 
 class AllCategories extends React.Component {
   state = {

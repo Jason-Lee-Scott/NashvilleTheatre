@@ -2,7 +2,6 @@
 
 .SingleSubscription {
   margin:  2% 3%;
-  padding: 1%;
   min-width: 20%;
   color: $black;
   overflow: hidden;
@@ -15,14 +14,14 @@
     text-transform: capitalize !important;
   }
   p {
-    font-size: small;
-    color: rgb(48, 47, 47);
+    font-size: 14px;
+    color:$black;
   }
   .clip-circle-top {
     width: 70%;
     height: 84px;
     border-radius: 100% 100% 100%;
-    background-color: $black;
+    background-color: $white;
     margin-top:-10%;
     transform: translate(20%, -40%);
   }
@@ -30,13 +29,22 @@
     width: 70%;
     height: 84px;
     border-radius: 100% 100% 100%;
-    background-color: $black;
+    background-color: $white;
     margin-top: 0;
     transform: translate(20%, 60%);
   }
   h1, h4, h6, p {
     padding: 2% 6%;
     margin: 0 6%;
+  }
+  .ticketNugget {
+    background-color: $white;
+    margin: 1% 0;
+    padding: 5px;
+  }
+  .subscribe-button{
+    margin: 5% 0;
+    width: 90%;
   }
 }
 
