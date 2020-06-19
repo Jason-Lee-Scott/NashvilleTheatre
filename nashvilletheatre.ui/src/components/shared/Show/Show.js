@@ -1,7 +1,7 @@
 import React from 'react';
-import moment from 'react-moment';
+import moment from 'moment';
 import './Show.scss';
-// import showData from '../../../helpers/data/showData';
+
 
 class Show extends React.Component {
 
@@ -13,7 +13,8 @@ class Show extends React.Component {
                 <img src={show.showImageUrl} className="card-img-top" alt="..."/>
                 <div className="card-body">
                     <h5 className="card-title">{show.showName}</h5>
-                    <p>{show.showDate}</p>
+                    <p>{moment(show.showDate).format('L')}</p>
+                    <p>{moment(show.showTime).format('LT')}</p>
                     <p className="card-text">{show.venueName}</p>
                     
                 </div>
