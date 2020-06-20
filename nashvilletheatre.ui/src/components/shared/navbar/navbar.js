@@ -1,10 +1,12 @@
 import React from 'react';
-import ntc_logo from '../../../images/ntc_logo_4c.png';
-import profile_icon from '../../../images/icons/profile_icon.png';
+import { Link } from 'react-router-dom';
 
 import Topcategories from './Topcategories';
 import SearchBar from './SearchBar';
-import './Navbar.scss';
+
+import ntc_logo from '../../../images/ntc_logo_4c.png';
+import profile_icon from '../../../images/icons/profile_icon.png';
+import './navbar.scss';
 
 class Navbar extends React.Component {
   render() {
@@ -12,9 +14,9 @@ class Navbar extends React.Component {
       <div>
         <nav className="navbar navbar-expand">
           <div className="navbar brand">
-            <a className="navbar-brand" href="/">
+            <Link className="navbar-brand" to="/">
               <img src={ntc_logo} height="50" alt="NashvilleTheater.com" />
-            </a>
+            </Link>
           </div>
           <div className="search-group">
             <SearchBar />
@@ -23,14 +25,14 @@ class Navbar extends React.Component {
 
           <div className="navbar-nav ml-auto">
             <ul className="navbar-nav justify-content-end">
-              <li className="nav-item active">
-                <a className="nav-link" href="#">Join</a>
+              <li className="nav-item">
+                <Link className="nav-link" to="/register">Join</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">My Tickets</a>
+                <Link className="nav-link" to="/account">My Tickets</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Sign In <img src={profile_icon} height="20" alt="" /></a>
+                <Link className="nav-link" to="/login">Sign In <img src={profile_icon} height="20" alt="" /></Link>
               </li>
             </ul>
           </div>

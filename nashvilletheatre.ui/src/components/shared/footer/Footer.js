@@ -3,7 +3,6 @@ import Newsletter from './Newsletter';
 import Affiliates from './Affiliates';
 
 import AllCategories from '../AllCategories/AllCategories';
-import AllSubscriptions from '../AllSubscriptions/AllSubscriptions';
 
 import ntc_logo from '../../../images/ntc_logo_wht.png';
 import fb_ico from '../../../images/icons/facebook_icon.png';
@@ -26,10 +25,6 @@ class Footer extends React.Component {
             <Affiliates />
           </div>
 
-          <div className="">
-            <AllSubscriptions />
-          </div>
-
         </div>
 
       <div className="footer-bottom d-flex justify-content-between">
@@ -42,10 +37,10 @@ class Footer extends React.Component {
           <p><a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a></p>
         </div>
         <div className="social-icon">
-          <a href="#"><img src={fb_ico} alt="" /></a>
-          <a href="#"><img src={insta_ico} alt="" /></a>
-          <a href="#"><img src={tw_ico} alt="" /></a>
-          <a href="#"><img src={yt_ico} alt="" /></a>
+          <a href="https://www.facebook.com/hartkevin/"><img src={fb_ico} alt="" /></a>
+          <a href="https://www.instagram.com/schwarzenegger/"><img src={insta_ico} alt="" /></a>
+          <a href="https://twitter.com/Rosie"><img src={tw_ico} alt="" /></a>
+          <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0"><img src={yt_ico} alt="" /></a>
         </div>
         <div className="text-right">
           <Newsletter />
