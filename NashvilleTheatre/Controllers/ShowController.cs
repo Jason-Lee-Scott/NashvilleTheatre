@@ -58,5 +58,22 @@ namespace NashvilleTheatre.Controllers
                 return Ok(show);
             }
         }
+
+        [HttpGet("allshowsbydate")] 
+        public IActionResult GetShowsWithDateTime()
+        {
+            var show = _showRepository.GetAllShowsWithMostRecentDate();
+
+            if (show == null)
+            {
+                return NotFound("No show with that information could be found.");
+            }
+            else
+            {
+                return Ok(show);
+            }
+        }
+
+
     }
 }

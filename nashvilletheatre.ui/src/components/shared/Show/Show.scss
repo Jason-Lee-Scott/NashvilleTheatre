@@ -1,0 +1,42 @@
+@import '../../../styles/variables';
+
+.showcard {
+    margin: 1em;
+    padding: 0;
+    height: 60%;
+    width: 20em;
+    justify-content: center;
+    border: 0;
+    
+
+    .show-image {
+        height: 8em;
+        padding: 0;
+        margin: .15em;
+
+        
+       
+         
+    }
+
+    .showname {
+        font-size: .75em;
+    }
+        
+    .showdate, .showtime {
+         margin: 0;
+         font-size: .75em;
+    }
+
+    .venue {
+        font-size: .75em;
+    }
+    
+}
+
+.show-margin {
+    margin-left: -20%;
+    padding: 0;
+    color: white;
+}
+

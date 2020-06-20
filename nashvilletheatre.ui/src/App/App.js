@@ -17,6 +17,7 @@ import Account from '../components/pages/Account/Account';
 import Footer from '../components/shared/Footer/Footer';
 import './App.scss';
 
+
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = (props) => (authed === false ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/', state: { from: props.location } }} />);
   return <Route {...rest} render={(props) => routeChecker(props)} />;

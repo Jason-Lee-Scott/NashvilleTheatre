@@ -19,7 +19,7 @@ namespace NashvilleTheatre.DataAccess
 
         public List<Show> GetAllShows()
         {
-            var sql = @"select * from Show";
+            var sql = @"select * from show";
 
             using (var db = new SqlConnection(ConnectionString))
             {
@@ -62,6 +62,28 @@ namespace NashvilleTheatre.DataAccess
             {
                 var showsByTheatreCo = db.Query<Show>(sql, parameters).ToList();
                 return showsByTheatreCo;
+            }
+        }
+
+        public IEnumerable<ShowWithDateAndVenueName> GetAllShowsWithMostRecentDate()
+        {
+            var sql = @"select show.ShowId, show.ShowName, show.showImageUrl,
+                        show.VenueId, Venue.VenueName, show.TheatreCoId, TheatreCompany.TheatreCompanyName,
+                        MAX(showdatetime.showdatetime) AS 'ShowDateTime'
+                        from show
+                        join showdatetime
+                        on showdatetime.showid = show.showid
+                        join Venue
+                        on venue.VenueId = show.VenueId
+                        join TheatreCompany
+                        on TheatreCompany.TheatreCoId = Show.TheatreCoId
+                        group by show.ShowId, Show.TheatreCoId, show.VenueId, 
+                            venue.venueName, ShowName, ShowImageUrl, TheatreCompanyName";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var showsWithDate = db.Query<ShowWithDateAndVenueName>(sql);
+                return showsWithDate;
             }
         }
     }
