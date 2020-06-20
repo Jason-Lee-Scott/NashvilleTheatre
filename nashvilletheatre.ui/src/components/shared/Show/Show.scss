@@ -1,6 +1,55 @@
 @import '../../../styles/variables';
 
-// .clip-circle-left {
+.showcard {
+    margin: 1em;
+    padding: 0;
+    height: 60%;
+    width: 20em;
+    justify-content: center;
+    border: 0;
+    
+
+    .show-image {
+        height: 8em;
+        padding: 0;
+        margin: .15em;
+
+        
+       
+         
+    }
+
+    .showname {
+        font-size: .75em;
+    }
+        
+    .showdate, .showtime {
+         margin: 0;
+         font-size: .75em;
+    }
+
+    .venue {
+        font-size: .75em;
+    }
+    
+}
+
+.show-margin {
+    margin-left: -20%;
+    padding: 0;
+    color: white;
+}
+
+.clip-circle-left {
+    // width: 70%;
+    height: 84px;
+    border-radius: 100% ;
+    background-color: gray;
+    margin-left: -30%;
+    margin-top: 20%;
+    transform: translate(10%, -40%);
+  }
+// .card-image-top {
 //     width: 70%;
 //     height: 84px;
 //     border-radius: 100% 100% 100%;
