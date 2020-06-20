@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Dapper;
+using Microsoft.AspNetCore.Authorization;
 using NashvilleTheatre.DataAccess;
 using NashvilleTheatre.Models;
 using NashvilleTheatre.Commands;
@@ -14,6 +15,7 @@ namespace NashvilleTheatre.Controllers
 {
     [Route("api/user")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
         UserRepository _userRepository;
@@ -33,6 +35,7 @@ namespace NashvilleTheatre.Controllers
 
         // api/user/adduser
         [HttpPost("adduser")]
+        [AllowAnonymous]
         public IActionResult AddNewUser(AddNewUserCommand newUser)
         {
             // validate email

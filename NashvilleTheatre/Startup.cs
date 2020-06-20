@@ -35,6 +35,8 @@ namespace NashvilleTheatre
                     builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin())
             );
 
+            var authSettings = Configuration.GetSection("AuthenticationSettings");
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                     {
