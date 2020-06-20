@@ -11,7 +11,7 @@ class Home extends React.Component {
      <div>
        <h1 className="text-center">This is the Homepage</h1>
        <AllShows />
-      <AllSubscriptions />
+       <AllSubscriptions />
      </div>
     )
   }
