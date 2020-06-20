@@ -1,0 +1,7 @@
+<svg width="0" height="0">
+  <defs>
+    <clipPath id="ticket-clip" clipPathUnits="objectBoundingBox">
+      <path d="M320%,53.2V0%H0%V53.2%C12.8%,53.2%,23.2%,63%,23.2%,75S12.8%,96.8%,0%,96.8%V150%H320%V96.8%c-12.8%,0-23.2-9.8-23.2-21.8S307.2,53.2,320,53.2Z"/>
+    </clipPath>
+  </defs>
+</svg>

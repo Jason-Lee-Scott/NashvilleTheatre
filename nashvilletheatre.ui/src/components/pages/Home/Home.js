@@ -9,7 +9,7 @@ class Home extends React.Component {
   render() {
     return (
      <div>
-       <h1 className="text-center">This is the Homepage</h1>
+       <h1 className="text-center">Welcome NashvilleTheatre.com</h1>
        <AllShows />
        <AllSubscriptions />
      </div>
