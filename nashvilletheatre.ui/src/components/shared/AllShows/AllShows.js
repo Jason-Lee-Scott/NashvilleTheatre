@@ -20,7 +20,7 @@ class AllShows extends React.Component {
         const { shows } = this.state;
         const singleShow = shows.map((show) => <Show key={show.showId} show={show} showDate={show.showDateTime} showTime={show.showDateTime}/>);
         return (
-            <div className="allshows container justify-content-center d-flex flex-wrap">{singleShow}</div>
+            <div className=" d-flex flex-wrap justify-content-center">{singleShow}</div>
         )
     }
 }

@@ -1,42 +1,39 @@
 @import '../../../styles/variables';
 
-.showcard {
-    margin: 1em;
-    padding: 0;
-    height: 60%;
-    width: 20em;
-    justify-content: center;
-    border: 0;
-    
+.show-card {
+	font-family:$text;
+	margin: 1em;
+	padding: 0;
+	justify-content: middle;
+	width: 320px;
 
-    .show-image {
-        height: 8em;
-        padding: 0;
-        margin: .15em;
+	.ticket-image {
+		clip-path: url(#ticket-clip);
+		img {
+			width: 100%;
+		}
+	}
 
-        
-       
-         
-    }
-
-    .showname {
-        font-size: .75em;
-    }
-        
-    .showdate, .showtime {
-         margin: 0;
-         font-size: .75em;
-    }
-
-    .venue {
-        font-size: .75em;
-    }
-    
-}
-
-.show-margin {
-    margin-left: -20%;
-    padding: 0;
-    color: white;
+	.show-info {
+		margin-top: -3em;
+		.show-name {
+			font-weight: 700;
+		}
+		.red-dash {
+			background-color: $mainRed;
+			height: 3px;
+			width: 2em;
+		}
+		.show-date, .show-time{
+			margin: 0;
+			font-size: $h4;
+		}
+		a.view-info {
+				color:$mainRed !important;
+		}
+		a:hover {
+			color:$black !important;
+		}
+	}
 }
 
