@@ -86,5 +86,29 @@ namespace NashvilleTheatre.DataAccess
                 return showsWithDate;
             }
         }
+
+
+        public IEnumerable<ShowByCategory> GetAllShowsByCategoryId(int categoryId)
+        {
+            var sql = @"select show.*, TheatreCompany.TheatreCompanyName, Category.CategoryName, Venue.*, ShowDateTime.ShowDateTime
+                        from show
+                        join TheatreCompany
+                        on TheatreCompany.TheatreCoId = show.TheatreCoId
+                        join category
+                        on category.CategoryId = show.CategoryId
+                        join Venue
+                        on Venue.VenueId = show.VenueId
+                        join ShowDateTime 
+                        on ShowDateTime.ShowId = show.ShowId
+                        where category.CategoryId = @categoryId
+                        order by CategoryId";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var parameters = new { categoryId = categoryId };
+                var showsByCategory = db.Query<ShowByCategory>(sql, parameters);
+                return showsByCategory;
+            }
+        }
     }
 }
