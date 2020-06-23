@@ -1,5 +1,5 @@
 import React from 'react';
-import Category from '../Category/Category';
+import CategoryCard from '../CategoryCard/CategoryCard';
 import {getAllCategories} from '../../../helpers/data/CategoryData';
 
 class AllCategories extends React.Component {
@@ -14,7 +14,7 @@ class AllCategories extends React.Component {
 
   render() {
     const { categories } = this.state;
-    const cat = categories.map((category) => <Category key={category.categoryId} category={category} />);
+    const cat = categories.map((category) => <CategoryCard key={category.categoryId} category={category} />);
     return (
       <div className="category-links AllCategories">
         <ul className="nav justify-content-center">

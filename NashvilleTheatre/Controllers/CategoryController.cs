@@ -32,5 +32,22 @@ namespace NashvilleTheatre.Controllers
             var summary = _categoryRepository.GetCategorySummariesNew(category);
             return Ok(summary);
         }
+
+        [HttpGet("shows/{categoryId}")]
+        public IActionResult GetShowsByCategory(int categoryId)
+        {
+            var showsByCategory = _categoryRepository.GetAllShowsByCategoryId(categoryId);
+
+            if (showsByCategory == null)
+            {
+                return NotFound("No shows in that category.");
+            }
+            else
+            {
+                return Ok(showsByCategory);
+            }
+        }
+
+
     }
 }

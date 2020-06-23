@@ -1,10 +1,10 @@
 import React from 'react';
 import moment from 'moment';
-import './Show.scss';
+import './ShowCard.scss';
 import { Link } from 'react-router-dom';
 
 
-class Show extends React.Component {
+class ShowCard extends React.Component {
 
 	render() {
 		const { show } = this.props;
@@ -39,4 +39,4 @@ class Show extends React.Component {
 	}
 }
 
-export default Show;
+export default ShowCard;

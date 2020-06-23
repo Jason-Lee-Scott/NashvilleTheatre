@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-class Category extends React.Component {
+class CategoryCard extends React.Component {
   render() {
     const { category } = this.props;
     return (
@@ -13,4 +13,4 @@ class Category extends React.Component {
   }
 }
 
-export default Category;
+export default CategoryCard;

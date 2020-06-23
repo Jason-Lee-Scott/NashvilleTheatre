@@ -7,4 +7,10 @@ const getAllCategories = () => new Promise((resolve, reject) => {
     .catch(error => reject(error))
 })
 
-export { getAllCategories };
+const getShowsByCategory = (categoryId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/api/category/shows/${categoryId}`)
+  .then((result) => resolve(result.data))
+  .catch(error => reject(error))
+}) 
+
+export { getAllCategories, getShowsByCategory };
