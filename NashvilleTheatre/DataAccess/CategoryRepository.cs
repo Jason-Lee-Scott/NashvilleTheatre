@@ -99,7 +99,7 @@ namespace NashvilleTheatre.DataAccess
             }
         }
 
-        public IEnumerable<ShowByCategory> GetAllShowsByCategoryId(int categoryId)
+        public IEnumerable<ShowDates> GetAllShowsByCategoryId(int categoryId)
         {
             var sql = @"select show.*, TheatreCompany.TheatreCompanyName, Category.CategoryName, Venue.*, ShowDateTime.ShowDateTime
                         from show
@@ -114,11 +114,35 @@ namespace NashvilleTheatre.DataAccess
                         where category.CategoryId = @categoryId
                         order by CategoryId";
 
+            var showdatesSql = @"select category.*, ShowDateTime.ShowDateTime
+                                from category 
+                                join show
+                                on show.CategoryId = Category.CategoryId
+                                join ShowDateTime
+                                on ShowDateTime.showId = show.ShowId";
+
             using (var db = new SqlConnection(ConnectionString))
             {
-                var parameters = new { categoryId = categoryId };
+                var parameters = new { 
+                    categoryId = categoryId,
+
+                };
                 var showsByCategory = db.Query<ShowByCategory>(sql, parameters);
-                return showsByCategory;
+                var showDates = db.Query<ShowDates>(showdatesSql).ToList();
+                var datesForEachShow = new List<ShowDates>();
+
+                foreach (var date in showsByCategory)
+                {
+
+                    var showsWithDates = new ShowDates
+                    {
+                        CategoryName = date.CategoryName
+                        CategoryId = date.CategoryId,
+                        Dates = showDates.Where(x => x.Show == date.CategoryId)
+                    };
+                    datesForEachShow.Add(showsWithDates);
+                    return datesForEachShow;
+                }
             }
         }
 

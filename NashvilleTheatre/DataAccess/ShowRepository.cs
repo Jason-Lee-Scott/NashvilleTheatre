@@ -69,10 +69,12 @@ namespace NashvilleTheatre.DataAccess
         {
             var sql = @"select show.ShowId, show.ShowName, show.showImageUrl,
                         show.VenueId, Venue.VenueName, show.TheatreCoId, TheatreCompany.TheatreCompanyName,
-                        MAX(showdatetime.showdatetime) AS 'ShowDateTime'
+                        (select min(showdatetime.showdatetime) 
+                        from showdatetime where showdatetime.showid = show.showid and showdatetime > getdate())
+                        AS 'ShowDateTime'
                         from show
-                        join showdatetime
-                        on showdatetime.showid = show.showid
+                        join showdatetime sdt
+                        on sdt.showid = show.showid
                         join Venue
                         on venue.VenueId = show.VenueId
                         join TheatreCompany

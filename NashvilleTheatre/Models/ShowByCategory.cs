@@ -26,4 +26,11 @@ namespace NashvilleTheatre.Models
         public string VenueImageUrl { get; set; }
         public DateTime ShowDateTime { get; set; }
     }
+
+    public class ShowDates
+    {
+        public string CategoryName { get; set; }
+        public int CategoryId { get; set; }
+        public IEnumerable<DateTime> Dates { get; set; }
+    }
 }
