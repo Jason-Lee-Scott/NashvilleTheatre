@@ -1,25 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {getTopCategories} from '../../../helpers/data/categoryData';
 import './navbar.scss';
+import Category from '../Category/Category';
 
 class Topcategories extends React.Component {
+  state = {
+    categories: [],
+  }
+
+  componentDidMount() {
+    getTopCategories()
+      .then(categories => this.setState({ categories: categories }))
+  }
+
   render() {
+    const { categories } = this.state;
     return (
       <nav>
         <div className="nav mr-auto">
         <ul className="nav">
-          <li className="nav-item">
-            <Link className="nav-link" to="/category/1">Comedy</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/category/2">Tragedy</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/category/3">Drama</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/category/4">Musical</Link>
-          </li>
+          {categories.map((category) => <Category key={category.categoryId+"Cat"} category={category} />)}
         </ul>
       </div>
       </nav>
@@ -27,4 +27,5 @@ class Topcategories extends React.Component {
     );
   }
 }
+
 export default Topcategories;

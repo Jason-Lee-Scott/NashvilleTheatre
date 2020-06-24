@@ -30,7 +30,7 @@ class CategoryDropdown extends React.Component {
 
   render() {
     const { category } = this.props;
-    const catSum = this.props?.categorySummary;
+    const { categorySummary } = this.props?.categorySummary;
     return (
       <li className="nav-item Category">
         <Dropdown className="Category-dropdown" onMouseOver={this.onMouseEnter} onMouseLeave={this.onMouseLeave} isOpen={this.state.dropdownOpen} toggle={this.toggle}>
@@ -38,10 +38,10 @@ class CategoryDropdown extends React.Component {
           <Link className="nav-link" to={`/category/${category.categoryId}`}>{category.categoryName}</Link>
         </DropdownToggle>
         <DropdownMenu>
-          <DropdownItem header>{category.categoryName} ({catSum.categoryTotal} shows)</DropdownItem>
+        <DropdownItem header>{category.categoryName} ({categorySummary.categoryTotal} shows)</DropdownItem>
           <DropdownItem divider />
           {
-            (catSum.showList?.map(show =>
+            (categorySummary.showList?.map(show =>
               <DropdownItem key={show.showId+"-category"}>
                 <Link className="dropdown-item-text-category" to={`/show/${show.showId}`}>{show.showName}</Link>
               </DropdownItem>))
@@ -52,5 +52,7 @@ class CategoryDropdown extends React.Component {
     )
   }
 }
+
+
 
 export default CategoryDropdown;

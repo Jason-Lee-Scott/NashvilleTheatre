@@ -18,4 +18,10 @@ const getCategorySummary = (category) => new Promise((resolve, reject) => {
     .catch((error) => reject(error))
 });
 
-export { getAllCategories, getCategorySummary };
+const getTopCategories = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/api/category/top/categories`)
+    .then((result) => resolve(result.data))
+    .catch((error) => reject(error))
+});
+
+export { getAllCategories, getCategorySummary, getTopCategories };
