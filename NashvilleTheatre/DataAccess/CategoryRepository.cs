@@ -98,5 +98,17 @@ namespace NashvilleTheatre.DataAccess
                 return categorySummary;
             }
         }
+
+        public List<Category> GetTopCategories()
+        {
+            var sql = @"select * from Category
+                        where CategoryName in ('Comedy', 'Tragedy', 'Drama', 'Musical')";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var categories = db.Query<Category>(sql).ToList();
+                return categories;
+            }
+        }
     }
 }
