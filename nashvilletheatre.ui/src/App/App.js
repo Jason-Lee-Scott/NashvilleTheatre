@@ -1,4 +1,5 @@
 import React from 'react';
+import FirebaseApp from '../helpers/utilities/connection';
 import {
   BrowserRouter as Router,
   Route,
@@ -17,6 +18,7 @@ import Account from '../components/pages/Account/Account';
 import Footer from '../components/shared/Footer/Footer';
 import './App.scss';
 
+FirebaseApp();
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = (props) => (authed === false ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/', state: { from: props.location } }} />);
