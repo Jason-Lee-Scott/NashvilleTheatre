@@ -74,6 +74,16 @@ namespace NashvilleTheatre.Controllers
             }
         }
 
+        [HttpGet("search/{searchTerm}")]
+        public IActionResult Search(string searchTerm)
+        {
+            var searchResults = _showRepository.SearchShows(searchTerm);
 
+            if (!searchResults.Any())
+            {
+                return NotFound("We aren't finding anything that matches your search terms");
+            }
+            return Ok(searchResults);
+        }
     }
 }

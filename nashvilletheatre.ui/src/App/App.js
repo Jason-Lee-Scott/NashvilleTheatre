@@ -8,6 +8,7 @@ import {
 import Navbar from '../components/shared/Navbar/Navbar';
 import Home from '../components/pages/Home/Home';
 import Login from '../components/pages/Login/Login';
+import SearchResults from '../components/pages/SearchResults/SearchResults';
 import Register from '../components/pages/Register/Register';
 import Category from '../components/pages/Category/Category';
 import Show from '../components/pages/Show/Show';
@@ -42,6 +43,7 @@ class App extends React.Component {
           <Navbar />
           <Switch>
             <PublicRoute path="/" exact component={Home} authed={authed} />
+            <PublicRoute path="/search/:searchTerm" exact component={SearchResults} authed={authed} />
             <PublicRoute path="/login" exact component={Login} authed={authed} />
             <PublicRoute path="/register" exact component={Register} authed={authed} />
             <PublicRoute path="/category/:categoryId" exact component={Category} authed={authed} />
