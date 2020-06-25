@@ -39,5 +39,6 @@ namespace NashvilleTheatre.Controllers
             var categories = _categoryRepository.GetTopCategories();
             return Ok(categories);
         }
+
     }
 }

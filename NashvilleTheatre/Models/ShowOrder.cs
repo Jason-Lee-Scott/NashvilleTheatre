@@ -23,4 +23,13 @@ namespace NashvilleTheatre.Models
         public DateTime ShowDateTime { get; set; }
         public DateTime ShowOrderDate { get; set; }
     }
+
+    public class ShowOrdersByMonthByTheatreCo
+    {
+        public int OrderId { get; set; }
+        public string ShowName { get; set; }
+        public string TheatreCompanyName { get; set; }
+        public int CreditCost { get; set; }
+        public DateTime ShowOrderDate { get; set; }
+    }
 }

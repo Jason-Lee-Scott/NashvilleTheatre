@@ -54,9 +54,9 @@ namespace NashvilleTheatre.Controllers
         }
 
         [HttpGet("{theatreCompanyId}/orders")]
-        public IActionResult GetTheatreCompanyOrdersById(int theatreCompanyId)
+        public IActionResult GetAllTheatreCoOrdersById(int theatreCompanyId)
         {
-            var theatreOrders = _theatreCoRepository.GetAllTheatreOrdersById(theatreCompanyId);
+            var theatreOrders = _theatreCoRepository.GetAllTheatreCoOrdersById(theatreCompanyId);
 
             if (!theatreOrders.Any())
             {
@@ -66,5 +66,28 @@ namespace NashvilleTheatre.Controllers
 
         }
 
+        [HttpGet("{theatreCoId}/orders/currentmonth")]
+        public IActionResult GetAllTheatreCoOrdersThisMonth(int theatreCoId)
+        {
+            var theatreOrders = _theatreCoRepository.GetAllTheatreCoOrdersThisMonth(theatreCoId);
+
+            if (!theatreOrders.Any())
+            {
+                return NotFound("There doesn't appear to be any Theatre Company with that specific ID in our system.");
+            }
+            return Ok(theatreOrders);
+        }
+
+        [HttpGet("{theatreCoId}/totalcreditsbymo")]
+        public IActionResult GetAllTheatreCoTotalSalesByMonth(int theatreCoId)
+        {
+            var theatreOrders = _theatreCoRepository.GetAllTheatreCoTotalSalesByMonth(theatreCoId);
+
+            if (!theatreOrders.Any())
+            {
+                return NotFound("There doesn't appear to be any Theatre Company with that specific ID in our system.");
+            }
+            return Ok(theatreOrders);
+        }
     }
 }
