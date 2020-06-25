@@ -24,7 +24,7 @@ class Category extends React.Component {
   render() {
     const { showsByCategory } = this.state;
     
-    const ShowsByCat = showsByCategory.map((show) => <ShowCard key={show.showId-show.categoryId} show={show} showDate={show.showDateTime} showTime={show.showDateTime} />)
+    const ShowsByCat = showsByCategory.map((show) => <ShowCard key={show.showId+"category"} show={show} showDate={show.showDateTime} showTime={show.showDateTime} />)
     return (
      <div>
        <h1 className="text-center">This is the Category Page</h1>
