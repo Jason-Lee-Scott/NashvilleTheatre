@@ -5,7 +5,7 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-import Navbar from '../components/shared/Navbar/navbar';
+import Navbar from '../components/shared/Navbar/Navbar';
 import Home from '../components/pages/Home/Home';
 import Login from '../components/pages/Login/Login';
 import Register from '../components/pages/Register/Register';
@@ -48,7 +48,7 @@ class App extends React.Component {
             <PublicRoute path="/show/:showId" exact component={Show} authed={authed} />
             <PublicRoute path="/theatre/:theatreId" exact component={Theatre} authed={authed} />
             <PublicRoute path="/venue:venueId" exact component={Venue} authed={authed} />
-            <PrivateRoute path="/account" component={Account} authed={authed} />
+            <PublicRoute path="/account" component={Account} authed={authed} />
             {/* <PrivateRoute path="/theatre/:theatreId/show/new" exact component={ShowForm} />
             <PrivateRoute path="/theatre/:theatreId/show/:showId/edit" exact component={ShowForm} /> */}
           </Switch>
