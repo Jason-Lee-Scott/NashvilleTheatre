@@ -1,15 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { getCategorySummary } from '../../../helpers/data/categoryData';
+import CategoryDropdown from './CategoryDropdown';
 
 
 class CategoryCard extends React.Component {
+   state = {
+    categorySummary: {}
+  }
+
+  componentDidMount() {
+    const { category } = this.props;
+    getCategorySummary(category.categoryName)
+      .then(categorySummary => this.setState({ categorySummary: categorySummary }))
+  }
+
   render() {
+    const categorySummary = this.state;
     const { category } = this.props;
     return (
-      <li className="nav-item Category">
-        <Link className="nav-link" to={`/category/${category.categoryId}`}>{category.categoryName}</Link>
-      </li>
-    )
+      <CategoryDropdown key={category.categoryId+"Cat"} category={category} categorySummary={categorySummary} />
+    );
   }
 }
 

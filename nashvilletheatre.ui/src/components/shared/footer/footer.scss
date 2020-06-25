@@ -91,3 +91,10 @@ footer {
     margin: 0;
   }
 }
+
+.dropdown-item-text-category {
+  color: $black !important;
+  &:hover {
+    color: $mainRed !important;
+  }
+}

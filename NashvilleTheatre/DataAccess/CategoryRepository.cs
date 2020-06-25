@@ -99,6 +99,7 @@ namespace NashvilleTheatre.DataAccess
             }
         }
 
+<<<<<<< HEAD
         public IEnumerable<ShowDates> GetAllShowsByCategoryId(int categoryId)
         {
             var sql = @"select show.*, TheatreCompany.TheatreCompanyName, Category.CategoryName, Venue.*, ShowDateTime.ShowDateTime
@@ -146,5 +147,18 @@ namespace NashvilleTheatre.DataAccess
             }
         }
 
+=======
+        public List<Category> GetTopCategories()
+        {
+            var sql = @"select * from Category
+                        where CategoryName in ('Comedy', 'Tragedy', 'Drama', 'Musical')";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var categories = db.Query<Category>(sql).ToList();
+                return categories;
+            }
+        }
+>>>>>>> master
     }
 }

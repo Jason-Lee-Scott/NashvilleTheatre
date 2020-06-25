@@ -33,6 +33,7 @@ namespace NashvilleTheatre.Controllers
             return Ok(summary);
         }
 
+
         [HttpGet("shows/{categoryId}")]
         public IActionResult GetShowsByCategory(int categoryId)
         {
@@ -48,6 +49,13 @@ namespace NashvilleTheatre.Controllers
             }
         }
 
+
+        [HttpGet("top/categories")]
+        public IActionResult GetTopCategories()
+        {
+            var categories = _categoryRepository.GetTopCategories();
+            return Ok(categories);
+        }
 
     }
 }
