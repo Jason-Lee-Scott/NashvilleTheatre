@@ -1,5 +1,4 @@
 import React from 'react';
-
 import CategoryCard from '../CategoryCard/CategoryCard';
 import {getAllCategories} from '../../../helpers/data/categoryData';
 
