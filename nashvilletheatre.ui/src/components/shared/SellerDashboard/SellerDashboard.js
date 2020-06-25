@@ -15,11 +15,14 @@ state = {
 
   componentDidMount() {
     getAllTheatreCoOrders(1)
-      .then(orders => this.setState({ orders: orders }))
+    .then(orders => {
       getAllTheatreCoOrdersThisMonth(1)
-        .then(ordersByMo => this.setState({ ordersByMo: ordersByMo }))
-      getAllTheatreCoTotalSalesByMonth(1)
-        .then(monthlyCredits => this.setState({ monthlyCredits: monthlyCredits }))
+        .then(ordersByMo => {
+          getAllTheatreCoTotalSalesByMonth(1)
+            .then(monthlyCredits => this.setState({ monthlyCredits: monthlyCredits, ordersByMo: ordersByMo, orders: orders })
+        )
+      })
+    })
   }
 
   render() {
