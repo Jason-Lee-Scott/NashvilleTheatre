@@ -30,9 +30,8 @@ namespace NashvilleTheatre.Models
 
     public class ShowsWithDates
     {
-        public string CategoryName { get; set; }
-        public int CategoryId { get; set; }
-        
+       
+        public DateTime ShowDateTime { get; set; }
         public int ShowId { get; set; }
     }
 }

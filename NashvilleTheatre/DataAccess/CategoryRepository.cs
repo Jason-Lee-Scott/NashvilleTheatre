@@ -99,10 +99,49 @@ namespace NashvilleTheatre.DataAccess
             }
         }
 
+//        public List<DeniseTest> ForDenise(string category)
+//        {
+//            var showSql = @"select * from Show
+//                        Where CategoryId = 1";
+//            var dateSql = "select ShowId, ShowDateTime from ShowDateTime";
+//            using (var db = new SqlConnection(ConnectionString))
+//            {
+//                var shows = db.Query<Show>(showSql);
+//                var dates = db.Query<DeniseDate>(dateSql);
+//                List<DeniseTest> test = new List<DeniseTest>();
+//                foreach (var show in shows)
+//                {
+//                    var test2 = new DeniseTest
+//                    {
+//                        CategoryName = category,
+//                        ShowName = show.ShowName,
+//                        Synopsis = show.Synopsis,
+//                        CreditCost = show.CreditCost,
+//                        ShowList = dates.Where(x => x.ShowId == show.ShowId).Select(x => x.ShowDateTime).ToList()
+//                    };
+//                    test.Add(test2);
+//                }
+//                return test;
+//            }
+//        }
+//    }
+//}
+//public class DeniseTest
+//{
+//    public string CategoryName { get; set; }
+//    public string ShowName { get; set; }
+//    public string Synopsis { get; set; }
+//    public int CreditCost { get; set; }
+//    public List<DateTime> ShowList { get; set; }
+//}
+//public class DeniseDate
+//{
+//    public int ShowId { get; set; }
+//    public DateTime ShowDateTime { get; set; }
+//}
 
 
-
-        public IEnumerable<ShowsWithDates> GetAllShowsByCategoryId(int categoryId)
+public List<ShowByCategory> GetAllShowsByCategoryId(int categoryId)
         {
             var sql = @"select show.*, TheatreCompany.TheatreCompanyName, Category.CategoryName, Venue.*, ShowDateTime.ShowDateTime
                         from show
@@ -132,24 +171,39 @@ namespace NashvilleTheatre.DataAccess
                 };
                 var showsByCategory = db.Query<ShowByCategory>(sql, parameters);
                 var showDates = db.Query<ShowsWithDates>(showdatesSql);
-                var datesForEachShow = new List<ShowsWithDates>();
+                List<ShowByCategory> showsWithMultipleDates = new List<ShowByCategory>();
 
 
 
                 foreach (var show in showsByCategory)
                 {
 
-                    var dates = showDates.Where(x => x.ShowId == show.ShowId).Select(x => x.);
+                    
 
-                    var showsWithDates = new ShowsWithDates
+                    var showsWithDates = new ShowByCategory
                     {
-                        CategoryName = show.CategoryName,
+                        ShowId = show.ShowId,
+                        TheatreCoId = show.TheatreCoId,
+                        VenueId = show.VenueId,
+                        ShowName = show.ShowName,
+                        Synopsis = show.Synopsis,
+                        CreditCost = show.CreditCost,
                         CategoryId = show.CategoryId,
-                        Dates = dates
+                        ShowImageUrl = show.ShowImageUrl,
+                        TheatreCompanyName = show.TheatreCompanyName,
+                        CategoryName = show.CategoryName,
+                        VenueName = show.VenueName,
+                        StreetAddress = show.StreetAddress,
+                        City = show.City,
+                        State = show.State,
+                        ZipCode = show.ZipCode,
+                        Capacity = show.Capacity,
+                        VenueImageUrl = show.VenueImageUrl,
+                        Dates = showDates.Where(x => x.ShowId == show.ShowId).Select(x => x.ShowDateTime).ToList()
                     };
-                    datesForEachShow.Add(showsWithDates);
+                    showsWithMultipleDates.Add(showsWithDates);
                 }
-                return datesForEachShow;
+                return showsWithMultipleDates;
             }
         }
 
