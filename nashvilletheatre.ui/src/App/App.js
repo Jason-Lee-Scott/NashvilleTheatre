@@ -1,5 +1,6 @@
 import React from 'react';
 import FirebaseApp from '../helpers/utilities/connection';
+import firebase from 'firebase';
 import {
   BrowserRouter as Router,
   Route,
@@ -16,25 +17,41 @@ import Theatre from '../components/pages/Theatre/Theatre';
 import Venue from '../components/pages/Venue/Venue';
 import Account from '../components/pages/Account/Account';
 import Footer from '../components/shared/Footer/Footer';
+import Auth from '../helpers/utilities/auth';
 import './App.scss';
 
-FirebaseApp();
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = (props) => (authed === false ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/', state: { from: props.location } }} />);
   return <Route {...rest} render={(props) => routeChecker(props)} />;
 };
+
 const PrivateRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = (props) => (authed === true ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/', state: { from: props.location } }} />);
   return <Route {...rest} render={(props) => routeChecker(props)} />;
 };
 
+FirebaseApp();
 
 class App extends React.Component {
-
   state = {
     authed: false,
   };
+
+  // componentDidMount() {
+  //   this.removeListener = firebase.auth().onAuthStateChanged((user) => {
+  //     if (user) {
+  //       this.setState({ authed: true });
+  //     } else {
+  //       this.setState({ authed: false });
+  //     }
+  //   });
+  // }
+
+  // componentWillUnmount() {
+  //   this.removeListener();
+  // }
+
 
   render() {
     const { authed } = this.state;

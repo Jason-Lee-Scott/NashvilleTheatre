@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import authRequests from '../../../helpers/utilities/auth';
+import Auth from '../../../helpers/utilities/auth';
+import PropTypes from 'prop-types';
+
 
 
 class Login extends React.Component {
@@ -9,6 +12,7 @@ class Login extends React.Component {
       email: '',
       password: '',
     },
+    authed: false,
   };
 
 
@@ -38,12 +42,12 @@ class Login extends React.Component {
   };
 
   render () {
-    const { user } = this.state;
+    const { authed } = this.state;
     return (
       <div className="Login">
         <div id="login-form">
           <h1 className="text-center">Login</h1>
-          <form className="form-horizontal col-sm-6 col-sm-offset-3">
+          {/* <form className="form-horizontal col-sm-6 col-sm-offset-3">
             <div className="form-group">
               <label htmlFor="inputEmail" className="col-sm-4 control-label">
                 Email:
@@ -90,7 +94,8 @@ class Login extends React.Component {
                 </button>
               </div>
             </div>
-          </form>
+          </form> */}
+                <Auth />
         </div>
       </div>
     );
