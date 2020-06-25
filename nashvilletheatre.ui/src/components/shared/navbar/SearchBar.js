@@ -10,21 +10,9 @@ class SearchBar extends React.Component {
 
   searchBarChange = (e) => {
     e.preventDefault();
-    this.setState({ searchTerm: e.target.value });
-  }
-
-  searchEvent = (e) => {
-    e.preventDefault();
-    const { searchTerm } = this.state;
-    this.props.history.push(`search/${searchTerm}`);
-  }
-
-  handleChange= (e) => {
-    if (e.key === 'Enter') {
-      this.searchEvent(e);
-    } else {
-      this.searchBarChange(e);
-    }
+    this.setState({ searchTerm: e.target.value }, () => {
+      this.props.history.push(`/search/${this.state.searchTerm}`);
+    })
   }
 
   render() {
@@ -33,14 +21,14 @@ class SearchBar extends React.Component {
       <div className="navbar-nav">
         <form className="SearchBar">
         <div className="form-group">
-          <img src={searchIco} height="30" className="icon-inset" alt="search-icon"/>
+          <img src={searchIco} height="30" className="icon-inset" alt="Search:" />
           <input
           type="text"
           className="search-box form-control"
           id="show-search"
           placeholder="Event, play, or other show name"
           value={searchTerm}
-          onChange={this.handleChange}
+          onChange={this.searchBarChange}
           />
         </div>
         </form>

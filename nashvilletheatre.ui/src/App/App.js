@@ -5,10 +5,11 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-import Navbar from '../components/shared/Navbar/navbar';
+// import FirebaseApp from '../helpers/utilities/connection';
+import Navbar from '../components/shared/Navbar/Navbar';
+import SearchResults from '../components/pages/SearchResults/SearchResults';
 import Home from '../components/pages/Home/Home';
 import Login from '../components/pages/Login/Login';
-import SearchResults from '../components/pages/SearchResults/SearchResults';
 import Register from '../components/pages/Register/Register';
 import Category from '../components/pages/Category/Category';
 import Show from '../components/pages/Show/Show';
@@ -28,6 +29,7 @@ const PrivateRoute = ({ component: Component, authed, ...rest }) => {
   return <Route {...rest} render={(props) => routeChecker(props)} />;
 };
 
+// FirebaseApp();
 
 class App extends React.Component {
 
