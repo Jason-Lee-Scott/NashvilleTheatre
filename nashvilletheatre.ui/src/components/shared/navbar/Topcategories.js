@@ -1,7 +1,7 @@
 import React from 'react';
 import {getTopCategories} from '../../../helpers/data/categoryData';
 import './navbar.scss';
-import Category from '../Category/Category';
+import CategoryCard from '../CategoryCard/CategoryCard';
 
 class Topcategories extends React.Component {
   state = {
@@ -19,7 +19,7 @@ class Topcategories extends React.Component {
       <nav>
         <div className="nav mr-auto">
         <ul className="nav">
-          {categories.map((category) => <Category key={category.categoryId+"Cat"} category={category} />)}
+          {categories.map((category) => <CategoryCard key={category.categoryId+"Cat"} category={category} />)}
         </ul>
       </div>
       </nav>

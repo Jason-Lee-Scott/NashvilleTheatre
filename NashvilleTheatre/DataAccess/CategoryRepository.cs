@@ -99,8 +99,10 @@ namespace NashvilleTheatre.DataAccess
             }
         }
 
-<<<<<<< HEAD
-        public IEnumerable<ShowDates> GetAllShowsByCategoryId(int categoryId)
+
+
+
+        public IEnumerable<ShowsWithDates> GetAllShowsByCategoryId(int categoryId)
         {
             var sql = @"select show.*, TheatreCompany.TheatreCompanyName, Category.CategoryName, Venue.*, ShowDateTime.ShowDateTime
                         from show
@@ -115,7 +117,7 @@ namespace NashvilleTheatre.DataAccess
                         where category.CategoryId = @categoryId
                         order by CategoryId";
 
-            var showdatesSql = @"select category.*, ShowDateTime.ShowDateTime
+            var showdatesSql = @"select category.*, ShowDateTime.ShowDateTime, showdatetime.showId
                                 from category 
                                 join show
                                 on show.CategoryId = Category.CategoryId
@@ -129,25 +131,29 @@ namespace NashvilleTheatre.DataAccess
 
                 };
                 var showsByCategory = db.Query<ShowByCategory>(sql, parameters);
-                var showDates = db.Query<ShowDates>(showdatesSql).ToList();
-                var datesForEachShow = new List<ShowDates>();
+                var showDates = db.Query<ShowsWithDates>(showdatesSql);
+                var datesForEachShow = new List<ShowsWithDates>();
 
-                foreach (var date in showsByCategory)
+
+
+                foreach (var show in showsByCategory)
                 {
 
-                    var showsWithDates = new ShowDates
+                    var dates = showDates.Where(x => x.ShowId == show.ShowId).Select(x => x.);
+
+                    var showsWithDates = new ShowsWithDates
                     {
-                        CategoryName = date.CategoryName
-                        CategoryId = date.CategoryId,
-                        Dates = showDates.Where(x => x.Show == date.CategoryId)
+                        CategoryName = show.CategoryName,
+                        CategoryId = show.CategoryId,
+                        Dates = dates
                     };
                     datesForEachShow.Add(showsWithDates);
-                    return datesForEachShow;
                 }
+                return datesForEachShow;
             }
         }
 
-=======
+
         public List<Category> GetTopCategories()
         {
             var sql = @"select * from Category
@@ -159,6 +165,6 @@ namespace NashvilleTheatre.DataAccess
                 return categories;
             }
         }
->>>>>>> master
+
     }
 }

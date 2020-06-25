@@ -24,13 +24,15 @@ namespace NashvilleTheatre.Models
         public string ZipCode { get; set; }
         public int Capacity { get; set; }
         public string VenueImageUrl { get; set; }
-        public DateTime ShowDateTime { get; set; }
-    }
+        public List<DateTime> Dates { get; set; }
 
-    public class ShowDates
+}
+
+    public class ShowsWithDates
     {
         public string CategoryName { get; set; }
         public int CategoryId { get; set; }
-        public IEnumerable<DateTime> Dates { get; set; }
+        
+        public int ShowId { get; set; }
     }
 }
