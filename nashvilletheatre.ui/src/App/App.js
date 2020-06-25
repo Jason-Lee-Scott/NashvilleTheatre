@@ -5,7 +5,7 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-import Navbar from '../components/shared/Navbar/Navbar';
+import Navbar from '../components/shared/Navbar/navbar';
 import Home from '../components/pages/Home/Home';
 import Login from '../components/pages/Login/Login';
 import SearchResults from '../components/pages/SearchResults/SearchResults';

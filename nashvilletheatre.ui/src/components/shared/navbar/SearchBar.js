@@ -33,7 +33,7 @@ class SearchBar extends React.Component {
       <div className="navbar-nav">
         <form className="SearchBar">
         <div className="form-group">
-          <img src={searchIco} height="30" className="icon-inset" />
+          <img src={searchIco} height="30" className="icon-inset" alt="search-icon"/>
           <input
           type="text"
           className="search-box form-control"

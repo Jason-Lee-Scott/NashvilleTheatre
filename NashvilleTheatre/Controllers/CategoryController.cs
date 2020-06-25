@@ -32,5 +32,12 @@ namespace NashvilleTheatre.Controllers
             var summary = _categoryRepository.GetCategorySummariesNew(category);
             return Ok(summary);
         }
+
+        [HttpGet("top/categories")]
+        public IActionResult GetTopCategories()
+        {
+            var categories = _categoryRepository.GetTopCategories();
+            return Ok(categories);
+        }
     }
 }
