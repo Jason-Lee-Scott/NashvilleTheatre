@@ -7,4 +7,21 @@ const getAllCategories = () => new Promise((resolve, reject) => {
     .catch(error => reject(error))
 })
 
-export { getAllCategories };
+
+
+
+
+
+const getCategorySummary = (category) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/api/category/${category}`)
+    .then((result) => resolve(result.data))
+    .catch((error) => reject(error))
+});
+
+const getTopCategories = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/api/category/top/categories`)
+    .then((result) => resolve(result.data))
+    .catch((error) => reject(error))
+});
+
+export { getAllCategories, getCategorySummary, getTopCategories };
