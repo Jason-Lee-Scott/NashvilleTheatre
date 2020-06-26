@@ -8,11 +8,14 @@ class SearchBar extends React.Component {
     searchTerm: '',
   }
 
+  updateSearchTerm = (e) => {
+    this.setState({ searchTerm: e.target.value });
+  }
+
   searchBarChange = (e) => {
-    e.preventDefault();
-    this.setState({ searchTerm: e.target.value }, () => {
-      this.props.history.push(`/search/${this.state.searchTerm}`);
-    })
+    if (e.keyCode === 13) {
+      this.props.history.push(`/search/${this.state.searchTerm}/`);
+    }
   }
 
   render() {
@@ -28,7 +31,8 @@ class SearchBar extends React.Component {
           id="show-search"
           placeholder="Event, play, or other show name"
           value={searchTerm}
-          onChange={this.searchBarChange}
+          onChange={this.updateSearchTerm}
+          onKeyDown={this.searchBarChange}
           />
         </div>
         </form>

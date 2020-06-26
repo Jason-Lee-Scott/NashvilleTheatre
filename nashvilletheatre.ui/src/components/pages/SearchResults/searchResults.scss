@@ -1,5 +1,27 @@
 @import '../../../styles/variables';
-
-.search-term {
-  font-weight:300;
+.search-results {
+  margin:0 auto;
+  border-bottom: #efefef 1px solid;
+  .results-number {
+    margin-top: 16px;
+    color:$hollywood;
+  }
+  .no-results {
+    padding: 50px 0;
+    border-bottom: #efefef 1px solid;
+    margin-bottom: 50px;
+    .image-circle {
+      border-radius: 9999px;
+      overflow: hidden;
+      width: 300px;
+      height: 300px;
+      align-self: center;
+      text-align: center;
+      margin: 0 auto;
+      img {
+        position: relative;
+        right: 188px;
+      }
+    }
+  }
 }
