@@ -21,8 +21,7 @@ class SearchBar extends React.Component {
   render() {
     const { searchTerm } = this.state;
     return (
-      <div className="navbar-nav">
-        <form className="SearchBar">
+      <form className="SearchBar">
         <div className="form-group">
           <img src={searchIco} height="30" className="icon-inset" alt="Search:" />
           <input
@@ -35,8 +34,7 @@ class SearchBar extends React.Component {
           onKeyDown={this.searchBarChange}
           />
         </div>
-        </form>
-      </div>
+      </form>
     );
   }
 }
