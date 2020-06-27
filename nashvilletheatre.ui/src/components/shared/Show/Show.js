@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import './show.scss';
+import './Show.scss';
 import { Link } from 'react-router-dom';
 
 

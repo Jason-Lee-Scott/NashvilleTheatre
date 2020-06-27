@@ -1,7 +1,7 @@
 import React from 'react';
 import ShowCard from '../../shared/ShowCard/ShowCard';
 
-import { getShowsByCategory } from '../../../helpers/data/categoryData';
+import { getShowsByCategory } from '../../../helpers/data/CategoryData';
 import './category.scss';
 
 class Category extends React.Component {
