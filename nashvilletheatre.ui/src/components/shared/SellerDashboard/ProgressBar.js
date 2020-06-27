@@ -3,10 +3,10 @@ import {Progress} from 'reactstrap';
 
 class ProgressBar extends React.Component {
   render() {
-    const {order} = this.props;
+    const {monthlyCredits} = this.props;
     return (
         <div>
-        <div className="text-center">{order.TotalCredits}</div>
+        <div className="text-center">{monthlyCredits.TotalCredits}</div>
         <Progress />
         </div>
     )

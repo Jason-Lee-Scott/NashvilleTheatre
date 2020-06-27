@@ -5,8 +5,8 @@ class MonthlySales extends React.Component {
 
 
   render() {
-    const { ordersByMo } = this.props;
-    return ordersByMo.map(order => <ProgressBar key={order.Month} order={order} />);
+    const { monthlyCredits } = this.props;
+    return monthlyCredits.map(month => <ProgressBar key={month.Month} month={month} />);
   }
 }
 export default MonthlySales

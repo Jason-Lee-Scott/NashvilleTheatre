@@ -26,11 +26,11 @@ state = {
   }
 
   render() {
-    const { ordersByMo } = this.state;
+    const { ordersByMo, orders, monthlyCredits } = this.state;
     return (
       <div className="SellerDashboard">
         <h1>Sales</h1>
-          <MonthlySales ordersByMo={ordersByMo}/>
+          <MonthlySales monthlyCredits={monthlyCredits} />
         <h1>Inventory</h1>
       </div>
     )
