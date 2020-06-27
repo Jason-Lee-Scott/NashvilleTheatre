@@ -12,8 +12,8 @@ class Navbar extends React.Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-expand">
-          <div className="navbar brand">
+        <nav className="navbar navbar-expand d-flex flex-wrap justify-content-center">
+          <div className="navbar brand align-middle">
             <Link className="navbar-brand" to="/">
               <img src={ntc_logo} height="50" alt="NashvilleTheater.com" />
             </Link>
