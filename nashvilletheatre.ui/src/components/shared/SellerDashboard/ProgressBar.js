@@ -3,11 +3,15 @@ import {Progress} from 'reactstrap';
 
 class ProgressBar extends React.Component {
   render() {
-    const {monthlyCredits} = this.props;
+    const {month} = this.props;
+    console.log(month);
     return (
-        <div>
-        <div className="text-center">{monthlyCredits.TotalCredits}</div>
-        <Progress />
+        <div className="ProgressBar">
+        <div className="text-center">{month.month}</div>
+        <Progress multi>
+        <Progress bar value="10"></Progress>
+          <Progress bar value={month.totalCredits}/>
+        </Progress>
         </div>
     )
   }

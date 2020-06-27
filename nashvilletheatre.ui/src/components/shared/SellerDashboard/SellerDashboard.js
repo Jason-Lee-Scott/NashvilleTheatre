@@ -5,6 +5,8 @@ import { getAllTheatreCoOrders,
   getAllTheatreCoTotalSalesByMonth } from '../../../helpers/data/TheatreData';
 import MonthlySales from './MonthlySales';
 
+import './SellerDashboard.scss';
+
 
 class SellerDashboard extends React.Component {
 state = {
