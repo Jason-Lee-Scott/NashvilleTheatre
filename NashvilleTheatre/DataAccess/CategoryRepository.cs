@@ -143,7 +143,7 @@ namespace NashvilleTheatre.DataAccess
 
 public List<ShowByCategory> GetAllShowsByCategoryId(int categoryId)
         {
-            var sql = @"select show.*, TheatreCompany.TheatreCompanyName, Category.CategoryName, Venue.*, ShowDateTime.ShowDateTime
+            var sql = @"select show.*, TheatreCompany.TheatreCompanyName, Category.CategoryName, Venue.*
                         from show
                         join TheatreCompany
                         on TheatreCompany.TheatreCoId = show.TheatreCoId
@@ -151,8 +151,7 @@ public List<ShowByCategory> GetAllShowsByCategoryId(int categoryId)
                         on category.CategoryId = show.CategoryId
                         join Venue
                         on Venue.VenueId = show.VenueId
-                        join ShowDateTime 
-                        on ShowDateTime.ShowId = show.ShowId
+                        
                         where category.CategoryId = @categoryId
                         order by CategoryId";
 
@@ -199,9 +198,10 @@ public List<ShowByCategory> GetAllShowsByCategoryId(int categoryId)
                         Dates = showDates.Where(x => x.ShowId == show.ShowId).Select(x => x.ShowDateTime).ToList()
                     };
                     showsWithMultipleDates.Add(showsWithDates);
-                   
+               
+                     
                 }
-                return showsWithMultipleDates; 
+                return showsWithMultipleDates;
             }
         }
 
