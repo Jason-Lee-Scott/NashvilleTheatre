@@ -24,14 +24,14 @@ class Category extends React.Component {
 
   render() {
     const { showsByCategory } = this.state;
-    const {show} = this.props;
+    
     
      const ShowsByCat = showsByCategory.map((show) => <ShowCard key={show.showId} show={show}/>)
     return (
 
      <div>
-      <h1 className="text-center">{showsByCategory.map((show) => show.categoryName).slice(0, 1)}</h1>
-       <h2>do this work?</h2>
+      <h1 className="text-center cat-header">{showsByCategory.map((show) => show.categoryName).slice(0, 1)}</h1>
+       
        <div className="show-by-cat d-flex flex-wrap">{ShowsByCat}</div>
      </div>
     )
