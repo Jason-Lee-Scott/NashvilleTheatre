@@ -89,7 +89,22 @@ namespace NashvilleTheatre.DataAccess
             }
         }
 
+        //SEARCH
+        public List<Show> SearchShows(string searchTerm)
+        {
+            var sql = @"SELECT * FROM Show
+                        WHERE ShowName LIKE @SearchTerm
+                        OR Synopsis LIKE @SearchTerm
+                        ";
 
-        
+            var parameters = new { SearchTerm = "%"+searchTerm+"%" };
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var searchResults = db.Query<Show>(sql, parameters).ToList();
+                return searchResults;
+            }
+        }
+
     }
 }

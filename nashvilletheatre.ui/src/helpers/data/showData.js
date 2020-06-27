@@ -8,5 +8,11 @@ const getAllShows = () => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-export default { getAllShows };
- 
+const searchShows = (searchTerm) => new Promise((resolve, reject) => {
+    axios.get(`${baseUrl}/api/show/search/${searchTerm}`).then((result) => {
+        const searchResults = result.data;
+        resolve(searchResults);
+    }).catch((error) => reject(error));
+});
+
+export default { getAllShows, searchShows};

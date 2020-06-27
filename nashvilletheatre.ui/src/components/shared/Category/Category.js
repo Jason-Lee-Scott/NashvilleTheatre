@@ -1,9 +1,9 @@
 import React from 'react';
-import { getCategorySummary } from '../../../helpers/data/categoryData';
+import { getCategorySummary } from '../../../helpers/data/CategoryData';
 import CategoryDropdown from './CategoryDropdown';
 
 
-class CategoryCard extends React.Component {
+class Category extends React.Component {
    state = {
     categorySummary: {}
   }
@@ -23,4 +23,4 @@ class CategoryCard extends React.Component {
   }
 }
 
-export default CategoryCard;
+export default Category;

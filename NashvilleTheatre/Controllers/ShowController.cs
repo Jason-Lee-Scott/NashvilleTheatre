@@ -74,8 +74,38 @@ namespace NashvilleTheatre.Controllers
             }
         }
 
+<<<<<<< HEAD
         
+=======
+
+        //[HttpGet("{categoryId}")]
+        //public IActionResult GetShowsByCategory(int categoryId)
+        //{
+        //    var showsByCategory = _showRepository.GetAllShowsByCategoryId(categoryId);
+
+        //    if (showsByCategory == null)
+        //    {
+        //        return NotFound("No shows in that category.");
+        //    }
+        //    else
+        //    {
+        //        return Ok(showsByCategory);
+        //    }
+        //}
+>>>>>>> master
 
 
+        [HttpGet("search/{searchTerm}")]
+        public IActionResult Search(string searchTerm)
+        {
+            var searchResults = _showRepository.SearchShows(searchTerm);
+
+
+            if (!searchResults.Any())
+            {
+                return NotFound("We aren't finding anything that matches your search terms");
+            }
+            return Ok(searchResults);
+        }
     }
 }
