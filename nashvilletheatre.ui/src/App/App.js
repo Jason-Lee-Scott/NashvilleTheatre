@@ -1,6 +1,6 @@
 import React from 'react';
-import FirebaseApp from '../helpers/utilities/connection';
 import firebase from 'firebase';
+import FirebaseApp from '../helpers/utilities/connection';
 import {
   BrowserRouter as Router,
   Route,
@@ -17,14 +17,13 @@ import Theatre from '../components/pages/Theatre/Theatre';
 import Venue from '../components/pages/Venue/Venue';
 import Account from '../components/pages/Account/Account';
 import Footer from '../components/shared/Footer/Footer';
-import Auth from '../helpers/utilities/auth';
 import './App.scss';
 
-
-const PublicRoute = ({ component: Component, authed, ...rest }) => {
-  const routeChecker = (props) => (authed === false ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/', state: { from: props.location } }} />);
-  return <Route {...rest} render={(props) => routeChecker(props)} />;
-};
+// was able to remove this because a public route 
+// const PublicRoute = ({ component: Component, authed, ...rest }) => {
+//   const routeChecker = (props) => (authed === false ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/', state: { from: props.location } }} />);
+//   return <Route {...rest} render={(props) => routeChecker(props)} />;
+// };
 
 const PrivateRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = (props) => (authed === true ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/', state: { from: props.location } }} />);
@@ -38,19 +37,23 @@ class App extends React.Component {
     authed: false,
   };
 
-  // componentDidMount() {
-  //   this.removeListener = firebase.auth().onAuthStateChanged((user) => {
-  //     if (user) {
-  //       this.setState({ authed: true });
-  //     } else {
-  //       this.setState({ authed: false });
-  //     }
-  //   });
-  // }
+  componentDidMount() {
+    this.removeListener = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ authed: true });
+      } else {
+        this.setState({ authed: false });
+      }
+    });
+  }
 
-  // componentWillUnmount() {
-  //   this.removeListener();
-  // }
+  componentWillUnmount() {
+    this.removeListener();
+  }
+
+  handleAuthChange(authed) {
+    this.setState({authed: authed});
+  }
 
 
   render() {
@@ -58,16 +61,16 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
-          <Navbar />
+          <Navbar handleAuth={this.handleAuthChange} />
           <Switch>
-            <PublicRoute path="/" exact component={Home} authed={authed} />
-            <PublicRoute path="/login" exact component={Login} authed={authed} />
-            <PublicRoute path="/register" exact component={Register} authed={authed} />
-            <PublicRoute path="/category/:categoryId" exact component={Category} authed={authed} />
-            <PublicRoute path="/show/:showId" exact component={Show} authed={authed} />
-            <PublicRoute path="/theatre/:theatreId" exact component={Theatre} authed={authed} />
-            <PublicRoute path="/venue:venueId" exact component={Venue} authed={authed} />
-            <PrivateRoute path="/account" component={Account} authed={authed} />
+            <Route path="/" exact component={Home} authed={authed} />
+            <Route path="/login" exact component={Login} authed={authed} handleAuth={this.handleAuthChange} />
+            <Route path="/register" exact component={Register} authed={authed} />
+            <Route path="/category/:categoryId" exact component={Category} authed={authed} />
+            <Route path="/show/:showId" exact component={Show} authed={authed} />
+            <Route path="/theatre/:theatreId" exact component={Theatre} authed={authed} />
+            <Route path="/venue:venueId" exact component={Venue} authed={authed} />
+            <PrivateRoute path="/account" component={Account} authed={authed} handleAuth={this.handleAuthChange} />
             {/* <PrivateRoute path="/theatre/:theatreId/show/new" exact component={ShowForm} />
             <PrivateRoute path="/theatre/:theatreId/show/:showId/edit" exact component={ShowForm} /> */}
           </Switch>

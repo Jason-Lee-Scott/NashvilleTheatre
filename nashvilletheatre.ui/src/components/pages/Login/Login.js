@@ -22,7 +22,8 @@ class Login extends React.Component {
     authRequests
       .loginUser(user)
       .then(() => {
-        this.props.history.push('/trainers');
+        this.props.handleAuth(true);
+        this.props.history.push('/home');
       })
       .catch(error => {
         console.error('there was an error in registering', error);
@@ -42,12 +43,12 @@ class Login extends React.Component {
   };
 
   render () {
-    const { authed } = this.state;
+    const { authed, user } = this.state;
     return (
       <div className="Login">
         <div id="login-form">
           <h1 className="text-center">Login</h1>
-          {/* <form className="form-horizontal col-sm-6 col-sm-offset-3">
+          <form className="form-horizontal col-sm-6 col-sm-offset-3">
             <div className="form-group">
               <label htmlFor="inputEmail" className="col-sm-4 control-label">
                 Email:
@@ -94,8 +95,7 @@ class Login extends React.Component {
                 </button>
               </div>
             </div>
-          </form> */}
-                <Auth />
+          </form>
         </div>
       </div>
     );
