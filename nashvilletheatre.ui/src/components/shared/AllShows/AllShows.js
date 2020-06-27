@@ -1,5 +1,5 @@
 import React from 'react';
-import ShowCard from '../ShowCard/ShowCard';
+import Show from '../Show/Show';
 import showData from '../../../helpers/data/showData';
 
 
@@ -18,7 +18,7 @@ class AllShows extends React.Component {
 
     render() {
         const { shows } = this.state;
-        const singleShow = shows.map((show) => <ShowCard key={show.showId} show={show} showDate={show.showDateTime} showTime={show.showDateTime}/>);
+        const singleShow = shows.map((show) => <Show key={show.showId} show={show}/>);
         return (
             <div className=" d-flex flex-wrap justify-content-center">{singleShow}</div>
         )
