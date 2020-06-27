@@ -74,25 +74,7 @@ namespace NashvilleTheatre.Controllers
             }
         }
 
-<<<<<<< HEAD
-        
-=======
 
-        //[HttpGet("{categoryId}")]
-        //public IActionResult GetShowsByCategory(int categoryId)
-        //{
-        //    var showsByCategory = _showRepository.GetAllShowsByCategoryId(categoryId);
-
-        //    if (showsByCategory == null)
-        //    {
-        //        return NotFound("No shows in that category.");
-        //    }
-        //    else
-        //    {
-        //        return Ok(showsByCategory);
-        //    }
-        //}
->>>>>>> master
 
 
         [HttpGet("search/{searchTerm}")]

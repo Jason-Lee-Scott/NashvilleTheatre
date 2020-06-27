@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Category from '../Category/Category';
-import { getAllCategories } from '../../../helpers/data/CategoryData';
+import { getAllCategories } from '../../../helpers/data/categoryData';
 
 
 
