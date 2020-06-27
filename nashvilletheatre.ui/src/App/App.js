@@ -5,6 +5,8 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
+
+
 // import FirebaseApp from '../helpers/utilities/connection';
 import Navbar from '../components/shared/Navbar/Navbar';
 import SearchResults from '../components/pages/SearchResults/SearchResults';
@@ -51,7 +53,7 @@ class App extends React.Component {
             <PublicRoute path="/category/:categoryId" exact component={Category} authed={authed} />
             <PublicRoute path="/show/:showId" exact component={Show} authed={authed} />
             <PublicRoute path="/theatre/:theatreId" exact component={Theatre} authed={authed} />
-            <PublicRoute path="/venue:venueId" exact component={Venue} authed={authed} />
+            <PublicRoute path="/venue/:venueId" exact component={Venue} authed={authed} />
             <PrivateRoute path="/account" component={Account} authed={authed} />
             {/* <PrivateRoute path="/theatre/:theatreId/show/new" exact component={ShowForm} />
             <PrivateRoute path="/theatre/:theatreId/show/:showId/edit" exact component={ShowForm} /> */}
