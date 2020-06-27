@@ -33,11 +33,29 @@ namespace NashvilleTheatre.Controllers
             return Ok(summary);
         }
 
+
+        [HttpGet("shows/{categoryId}")]
+        public IActionResult GetShowsByCategory(int categoryId)
+        {
+            var showsByCategory = _categoryRepository.GetAllShowsByCategoryId(categoryId);
+
+            if (showsByCategory == null)
+            {
+                return NotFound("No shows in that category.");
+            }
+            else
+            {
+                return Ok(showsByCategory);
+            }
+        }
+
+
         [HttpGet("top/categories")]
         public IActionResult GetTopCategories()
         {
             var categories = _categoryRepository.GetTopCategories();
             return Ok(categories);
         }
+
     }
 }
