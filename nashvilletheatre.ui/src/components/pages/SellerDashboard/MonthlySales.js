@@ -7,9 +7,9 @@ class MonthlySales extends React.Component {
 
     const row = monthlyCredits.map(month =>
     <tr>
-      <th scope="row">1</th>
-      <td>month.month</td>
-      <td>month.totalCredits</td>
+      <th scope="row"></th>
+      <td>{month.month}</td>
+      <td>{month.totalCredits}</td>
     </tr>)
 
     return (
@@ -17,7 +17,7 @@ class MonthlySales extends React.Component {
         <Table>
           <thead>
             <tr>
-              <th>#</th>
+              <th></th>
               <th>Month</th>
               <th>Total Credits Sold</th>
             </tr>

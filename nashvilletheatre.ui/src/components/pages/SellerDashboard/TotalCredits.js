@@ -1,8 +1,5 @@
 import React from 'react';
 
-import {$mainRed as mainRed} from '../../../styles/_variables.scss';
-//$mainRed:#ef4023;
-
 class TotalCredits extends React.Component {
   render() {
     const { totalCredits } = this.props;
