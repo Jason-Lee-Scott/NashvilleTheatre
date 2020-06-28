@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import authRequests from '../../../helpers/utilities/auth';
 
 import './register.scss';

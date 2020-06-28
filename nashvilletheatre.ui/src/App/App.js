@@ -46,16 +46,16 @@ class App extends React.Component {
         this.setState({ authed: false });
       }
     });
-  }
+  };
 
-  componentWillUnmount() {
-    this.removeListener();
-  }
-
+  
   handleAuthChange(authed) {
     this.setState({authed: authed});
   }
-
+  
+  componentWillUnmount() {
+    this.removeListener();
+  };
 
   render() {
     const { authed } = this.state;
@@ -72,7 +72,7 @@ class App extends React.Component {
             <Route path="/theatre/:theatreId" exact component={Theatre} authed={authed} />
             <Route path="/venue:venueId" exact component={Venue} authed={authed} />
             <PrivateRoute path="/account" component={Account} authed={authed} handleAuth={this.handleAuthChange} />
-            <PublicRoute path="/search/:searchTerm" exact component={SearchResults} authed={authed} />
+            <Route path="/search/:searchTerm" exact component={SearchResults} authed={authed} />
             {/* <PrivateRoute path="/theatre/:theatreId/show/new" exact component={ShowForm} />
             <PrivateRoute path="/theatre/:theatreId/show/:showId/edit" exact component={ShowForm} /> */}
           </Switch>

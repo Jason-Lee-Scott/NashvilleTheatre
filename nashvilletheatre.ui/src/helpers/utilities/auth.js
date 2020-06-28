@@ -1,9 +1,8 @@
-import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import axios from 'axios';
 import keys from '../apiKeys.json';
-import { Link } from 'react-router-dom';
+
 
 const baseUrl = keys.baseUrl;
 

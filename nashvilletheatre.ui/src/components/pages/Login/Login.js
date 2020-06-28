@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import authRequests from '../../../helpers/utilities/auth';
-import Auth from '../../../helpers/utilities/auth';
-import PropTypes from 'prop-types';
-
 
 
 class Login extends React.Component {
@@ -43,7 +40,7 @@ class Login extends React.Component {
   };
 
   render () {
-    const { authed, user } = this.state;
+    const { user } = this.state;
     return (
       <div className="Login">
         <div id="login-form">

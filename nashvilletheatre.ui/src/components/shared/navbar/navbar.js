@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import firebase from 'firebase';
-import PropTypes from 'prop-types';
 
 import Topcategories from './Topcategories';
 import SearchBar from './SearchBar';
 
 import ntc_logo from '../../../images/ntc_logo_4c.png';
 import profile_icon from '../../../images/icons/profile_icon.png';
-import './navbar.scss';
+import './Navbar.scss';
 
 class Navbar extends React.Component {
 
@@ -94,6 +93,7 @@ class Navbar extends React.Component {
               onClick={this.loginClickEvent}
               >
               Login
+              <img src={profile_icon} height="20" alt="" />
             </Link>
             )}
           </li>
