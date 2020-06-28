@@ -53,9 +53,9 @@ class App extends React.Component {
     this.setState({authed: authed});
   }
   
-  componentWillUnmount() {
-    this.removeListener();
-  };
+  // componentWillUnmount() {
+  //   this.removeListener();
+  // };
 
   render() {
     const { authed } = this.state;

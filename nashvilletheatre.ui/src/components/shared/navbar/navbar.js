@@ -35,9 +35,9 @@ class Navbar extends React.Component {
     });
   }
 
-  componentWillUnmount() {
-    this.removeListener();
-  }
+  // componentWillUnmount() {
+  //   this.removeListener();
+  // }
   
   render() {
     const { authed } = this.state;
