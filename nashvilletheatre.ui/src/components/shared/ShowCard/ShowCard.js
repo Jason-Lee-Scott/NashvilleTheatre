@@ -3,8 +3,8 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 
 
-import './showCard.scss';
-import '../Show/show.scss';
+import './ShowCard.scss';
+import '../Show/Show.scss';
 
 class ShowCard extends React.Component {
     render() {

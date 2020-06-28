@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import searchIco from '../../../images/icons/search_icon.png'
-import './navbar.scss';
+import './Navbar.scss';
 
 class SearchBar extends React.Component {
   state = {
