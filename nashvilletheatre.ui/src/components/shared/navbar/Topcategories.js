@@ -1,5 +1,5 @@
 import React from 'react';
-import { getTopCategories } from '../../../helpers/data/categoryData';
+import { getTopCategories } from '../../../helpers/data/CategoryData';
 import './navbar.scss';
 import Category from '../Category/Category';
 
