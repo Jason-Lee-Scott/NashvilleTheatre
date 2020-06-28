@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Dapper;
+using Microsoft.AspNetCore.Authorization;
 using NashvilleTheatre.DataAccess;
 using NashvilleTheatre.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -42,6 +43,7 @@ namespace NashvilleTheatre.Controllers
         }
 
         [HttpGet("{userId}")]
+        [Authorize]
         public IActionResult GetOrdersByUserId(int userId)
         {
             var shows = _orderRepository.GetOrdersByUserId(userId);
@@ -54,6 +56,7 @@ namespace NashvilleTheatre.Controllers
 
         //POST: api/order/subscription/{uid}/{subId}
         [HttpPost("subscription/{uid}/{subId}")]
+        [Authorize]
         public IActionResult SubscriptionOrder(int uid, int subId)
         {
             var userCheck = _userRepository.GetUserByUid(uid);
@@ -80,6 +83,7 @@ namespace NashvilleTheatre.Controllers
 
         //GET: api/order/showOrder/1
         [HttpGet("showorder/{orderId}")]
+        [Authorize]
         public IActionResult ShowOrdersByOrderId(int orderId)
         {
             var showOrder = _orderRepository.GetShowOrderByOrderId(orderId);
@@ -92,6 +96,7 @@ namespace NashvilleTheatre.Controllers
 
         // GET: api/order/subscriptionorder/1
         [HttpGet("subscriptionorder/{orderId}")]
+        [Authorize]
         public IActionResult SubcriptionOrderByOrderId(int orderId)
         {
             var subscriptionOrder = _orderRepository.GetSubscriptionOrderBySubscriptionOrderId(orderId);

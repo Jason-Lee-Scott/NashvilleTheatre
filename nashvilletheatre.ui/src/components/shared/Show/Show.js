@@ -27,8 +27,8 @@ class Show extends React.Component {
 					<h5 className="show-name">{show.showName}</h5>
 						<div className="red-dash"></div>
 						<div className="d-flex justify-content-between">
-							<p className="show-date">{moment(show.showDate).format('L')}</p>
-							<p className="show-time">{moment(show.showTime).format('LT')}</p>
+							<p className="show-date">{moment(show.showDateTime).format('L')}</p>
+							<p className="show-time">{moment(show.showDateTime).format('LT')}</p>
 						</div>
 					<p className="venue">{show.venueName}</p>
 					<Link className="view-info" to={`/show/${show.showId}`}><h4>View Info</h4></Link>
