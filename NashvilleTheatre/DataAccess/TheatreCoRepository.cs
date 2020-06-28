@@ -121,10 +121,10 @@ namespace NashvilleTheatre.DataAccess
 
         public IEnumerable<Sales> GetAllTheatreCoTotalSalesByMonth(int theatreCoId)
         {
-            var sql = @"select datename(month, ShowOrderDate) 'Month', SUM(CreditCost) 'TotalCredits' from ShowOrder so
+            var sql = @"select top(6) datename(month, ShowOrderDate) 'Month', SUM(CreditCost) 'TotalCredits' from ShowOrder so
                         join Show as sh on sh.ShowId = so.ShowId
                         join TheatreCompany as tc on tc.TheatreCoId = sh.TheatreCoId
-                        where tc.TheatreCoId = 4
+                        where tc.TheatreCoId = @TheatreCoId
                         group by month(ShowOrderDate), datename(month, ShowOrderDate), CreditCost
                         order by month(ShowOrderDate)";
 
@@ -134,6 +134,22 @@ namespace NashvilleTheatre.DataAccess
             {
                 var totalSales = db.Query<Sales>(sql, parameters);
                 return totalSales;
+            }
+        }
+
+        public int GetNumberOfTheatreCoSalesEver(int theatreCoId)
+        {
+            var sql = @"select count(*) from ShowOrder as so
+                        join Show as sh on sh.ShowId = so.ShowId
+                        join TheatreCompany as tc on tc.TheatreCoId = sh.TheatreCoId
+                        where tc.TheatreCoId = @TheatreCoId";
+
+            var parameters = new { TheatreCoId = theatreCoId };
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var totalNumOfSales = db.QueryFirstOrDefault<int>(sql, parameters);
+                return totalNumOfSales;
             }
         }
 
