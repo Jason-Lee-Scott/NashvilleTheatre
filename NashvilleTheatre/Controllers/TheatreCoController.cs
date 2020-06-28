@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NashvilleTheatre.DataAccess;
@@ -42,6 +43,8 @@ namespace NashvilleTheatre.Controllers
         }
 
         [HttpGet("{theatreCompanyId}/orderswithcustomers")]
+        [Authorize]
+
         public IActionResult GetTheatreCoOrdersByTheatreCoId(int theatreCompanyId)
         {
             var theatreById = _theatreCoRepository.GetTheatreCoOrdersWithCustomerInfoById(theatreCompanyId);
@@ -54,7 +57,12 @@ namespace NashvilleTheatre.Controllers
         }
 
         [HttpGet("{theatreCompanyId}/orders")]
+<<<<<<< HEAD
         public IActionResult GetAllTheatreCoOrdersById(int theatreCompanyId)
+=======
+        [Authorize]
+        public IActionResult GetTheatreCompanyOrdersById(int theatreCompanyId)
+>>>>>>> master
         {
             var theatreOrders = _theatreCoRepository.GetAllTheatreCoOrdersById(theatreCompanyId);
 

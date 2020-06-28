@@ -1,9 +1,10 @@
 import React from 'react';
-import { getCategorySummary } from '../../../helpers/data/categoryData';
+import { getCategorySummary } from '../../../helpers/data/CategoryData';
 import CategoryDropdown from './CategoryDropdown';
 
+
 class Category extends React.Component {
-  state = {
+   state = {
     categorySummary: {}
   }
 
