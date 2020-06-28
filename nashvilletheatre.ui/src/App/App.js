@@ -20,6 +20,7 @@ import Venue from '../components/pages/Venue/Venue';
 import Account from '../components/pages/Account/Account';
 import Footer from '../components/shared/Footer/Footer';
 import './App.scss';
+import SellerDashboard from '../components/pages/SellerDashboard/SellerDashboard';
 
 // was able to remove this because a public route
 // const PublicRoute = ({ component: Component, authed, ...rest }) => {
@@ -72,6 +73,7 @@ class App extends React.Component {
             <Route path="/show/:showId" exact component={Show} authed={authed} />
             <Route path="/theatre/:theatreId" exact component={Theatre} authed={authed} />
             <Route path="/venue:venueId" exact component={Venue} authed={authed} />
+            <Route path="/account/theatreco" component={SellerDashboard} authed={authed} />
             <PrivateRoute path="/account" component={Account} authed={authed} handleAuth={this.handleAuthChange} />
             <Route path="/search/:searchTerm" exact component={SearchResults} authed={authed} />
             {/* <PrivateRoute path="/theatre/:theatreId/show/new" exact component={ShowForm} />

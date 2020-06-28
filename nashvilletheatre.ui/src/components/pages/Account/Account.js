@@ -1,6 +1,5 @@
 import React from 'react';
 import './account.scss';
-import SellerDashboard from '../../shared/SellerDashboard/SellerDashboard';
 
 class Account extends React.Component {
   state = {
@@ -11,7 +10,6 @@ class Account extends React.Component {
     return (
      <div>
        <h1 className="text-center">This is the Account Page</h1>
-       <SellerDashboard />
        <div class="card-columns">
          <div class="card">
            <img class="card-img-top" src="holder.js/100x180/" alt=""/>

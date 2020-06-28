@@ -1,0 +1,40 @@
+@import '../../../styles/variables';
+
+.MonthlySales {
+  margin: 1%;
+  width: 70%;
+}
+
+.seller-dashboard {
+  flex-direction: row;
+}
+
+.TotalCredits
+{
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  align-content: center;
+  align-items: center;
+  .credit {
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bolder;
+    color: $mainRed;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 2px solid red;
+    padding: 5%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .seller-dashboard {
+    margin: 1% 5%;
+    padding: 6%;
+    flex-direction: column !important;
+    width: 95%;
+  }
+}

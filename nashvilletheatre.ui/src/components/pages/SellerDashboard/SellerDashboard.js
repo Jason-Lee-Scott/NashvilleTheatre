@@ -1,9 +1,11 @@
 import React from 'react';
 
 import { getAllTheatreCoOrders,
-  getAllTheatreCoOrdersThisMonth,
+  getTotalCredits,
   getAllTheatreCoTotalSalesByMonth } from '../../../helpers/data/TheatreData';
+
 import MonthlySales from './MonthlySales';
+import TotalCredits from './TotalCredits';
 
 import './SellerDashboard.scss';
 
@@ -11,29 +13,31 @@ import './SellerDashboard.scss';
 class SellerDashboard extends React.Component {
 state = {
   orders: [],
-  ordersByMo: [],
+  totalCredits: 0,
   monthlyCredits: []
 }
 
   componentDidMount() {
-    getAllTheatreCoOrders(1)
+    getAllTheatreCoOrders(2)
     .then(orders => {
-      getAllTheatreCoOrdersThisMonth(1)
-        .then(ordersByMo => {
-          getAllTheatreCoTotalSalesByMonth(1)
-            .then(monthlyCredits => this.setState({ monthlyCredits: monthlyCredits, ordersByMo: ordersByMo, orders: orders })
+      getTotalCredits(2)
+        .then(totalCredits => {
+          getAllTheatreCoTotalSalesByMonth(2)
+            .then(monthlyCredits => this.setState({ monthlyCredits: monthlyCredits, totalCredits: totalCredits, orders: orders })
         )
       })
     })
   }
 
   render() {
-    const { ordersByMo, orders, monthlyCredits } = this.state;
+    const { totalCredits, orders, monthlyCredits } = this.state;
     return (
       <div className="SellerDashboard">
         <h1>Sales</h1>
+        <div className="d-flex seller-dashboard">
+          <TotalCredits totalCredits={totalCredits}/>
           <MonthlySales monthlyCredits={monthlyCredits} />
-        <h1>Inventory</h1>
+        </div>
       </div>
     )
   }

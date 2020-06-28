@@ -13,8 +13,8 @@ const getAllTheatreCoOrders = (theatreCoId) => new Promise((resolve, reject) => 
     .catch(error => reject(error))
 })
 
-const getAllTheatreCoOrdersThisMonth = (theatreCoId) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/api/theatre/${theatreCoId}/orders/currentmonth`)
+const getTotalCredits = (theatreCoId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/api/theatre/${theatreCoId}/totalnumofsales`)
     .then((result) => resolve(result.data))
     .catch(error => reject(error))
 })
@@ -28,7 +28,7 @@ const getAllTheatreCoTotalSalesByMonth = (theatreCoId) => new Promise((resolve, 
 export {
   getAllTheatres,
   getAllTheatreCoOrders,
-  getAllTheatreCoOrdersThisMonth,
+  getTotalCredits,
   getAllTheatreCoTotalSalesByMonth
 };
 
