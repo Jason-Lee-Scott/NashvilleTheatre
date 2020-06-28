@@ -6,7 +6,7 @@ class MonthlySales extends React.Component {
     const { monthlyCredits } = this.props;
 
     const row = monthlyCredits.map(month =>
-    <tr>
+    <tr key={month.month}>
       <th scope="row"></th>
       <td>{month.month}</td>
       <td>{month.totalCredits}</td>
