@@ -1,0 +1,12 @@
+{
+  "baseUrl": "https://localhost:44396",
+  "firebaseConfig": {
+      "apiKey": "",
+      "authDomain": "",
+      "databaseURL": "",
+      "projectId": "",
+      "storageBucket": "",
+      "messagingSenderId": "",
+      "appId": ""
+    }
+}

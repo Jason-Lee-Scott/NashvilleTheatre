@@ -10,10 +10,9 @@ import profile_icon from '../../../images/icons/profile_icon.png';
 import './Navbar.scss';
 
 class Navbar extends React.Component {
-
   state = {
-    authed: false
-  }
+    authed: false,
+  };
 
   loginClickEvent = (e) => {
     e.preventDefault();
