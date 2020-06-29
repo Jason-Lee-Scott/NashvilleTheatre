@@ -76,7 +76,7 @@ namespace NashvilleTheatre.DataAccess
             }
                                 }
 
-        public IEnumerable<TheatreOrders> GetAllTheatreOrdersById(int theatreCompanyId)
+        public IEnumerable<TheatreOrders> GetAllTheatreCoOrdersById(int theatreCompanyId)
         {
             var sql = @"SELECT TheatreCompany.*,
                         ShowOrder.OrderId, ShowOrder.ShowOrderDate, ShowOrder.[Uid],
@@ -100,6 +100,57 @@ namespace NashvilleTheatre.DataAccess
                 return theatreOrders;
             }
 
+        }
+
+        public IEnumerable<ShowOrdersByMonthByTheatreCo> GetAllTheatreCoOrdersThisMonth(int theatreCoId)
+        {
+            var sql = @"select OrderId, TheatreCompanyName, ShowName, ShowOrderDate, CreditCost from ShowOrder as so
+                        join Show as sh on sh.ShowId = so.ShowId
+                        join TheatreCompany as tc on tc.TheatreCoId = sh.TheatreCoId
+                        where tc.TheatreCoId = @TheatreCoId
+                        and month(ShowOrderDate) = month(getdate())";
+
+            var parameters = new { TheatreCoId = theatreCoId };
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var totalSales = db.Query<ShowOrdersByMonthByTheatreCo>(sql, parameters);
+                return totalSales;
+            }
+        }
+
+        public IEnumerable<Sales> GetAllTheatreCoTotalSalesByMonth(int theatreCoId)
+        {
+            var sql = @"select top(6) datename(month, ShowOrderDate) 'Month', SUM(CreditCost) 'TotalCredits' from ShowOrder so
+                        join Show as sh on sh.ShowId = so.ShowId
+                        join TheatreCompany as tc on tc.TheatreCoId = sh.TheatreCoId
+                        where tc.TheatreCoId = @TheatreCoId
+                        group by month(ShowOrderDate), datename(month, ShowOrderDate), CreditCost
+                        order by month(ShowOrderDate)";
+
+            var parameters = new { TheatreCoId = theatreCoId };
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var totalSales = db.Query<Sales>(sql, parameters);
+                return totalSales;
+            }
+        }
+
+        public int GetNumberOfTheatreCoSalesEver(int theatreCoId)
+        {
+            var sql = @"select count(*) from ShowOrder as so
+                        join Show as sh on sh.ShowId = so.ShowId
+                        join TheatreCompany as tc on tc.TheatreCoId = sh.TheatreCoId
+                        where tc.TheatreCoId = @TheatreCoId";
+
+            var parameters = new { TheatreCoId = theatreCoId };
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var totalNumOfSales = db.QueryFirstOrDefault<int>(sql, parameters);
+                return totalNumOfSales;
+            }
         }
 
     }

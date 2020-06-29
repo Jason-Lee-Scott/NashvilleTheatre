@@ -7,7 +7,7 @@ import SearchBar from './SearchBar';
 
 import ntc_logo from '../../../images/ntc_logo_4c.png';
 import profile_icon from '../../../images/icons/profile_icon.png';
-import './Navbar.scss';
+import './navbar.scss';
 
 class Navbar extends React.Component {
   state = {
@@ -38,7 +38,7 @@ class Navbar extends React.Component {
   // componentWillUnmount() {
   //   this.removeListener();
   // }
-  
+
   render() {
     const { authed } = this.state;
     const buildAuthComponent = () => {
@@ -50,8 +50,8 @@ class Navbar extends React.Component {
               <ul className="navbar-nav justify-content-end">
                 <li className="nav-item register">
                   { !authed && (
-                    <Link 
-                      className="nav-link" 
+                    <Link
+                      className="nav-link"
                       to="/register">
                       Join
                     </Link>
@@ -59,8 +59,8 @@ class Navbar extends React.Component {
                 </li>
                 <li className="nav-item account">
                   { authed && (
-                    <Link 
-                      className="nav-link" 
+                    <Link
+                      className="nav-link"
                       to="/account">
                       My Tickets
                     </Link>
@@ -83,7 +83,7 @@ class Navbar extends React.Component {
       )
     }
 
-      return <ul className='navbar-nav'>                
+      return <ul className='navbar-nav'>
           <li className="nav-item">
             { !authed && (
             <Link
@@ -98,7 +98,7 @@ class Navbar extends React.Component {
           </li>
         </ul>;
       };
-   
+
       return (
         <div>
           <nav className="navbar navbar-expand">

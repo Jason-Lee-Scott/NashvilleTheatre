@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 import './ShowCard.scss';
-import '../Show/Show.scss';
+import '../Show/show.scss';
 
 class ShowCard extends React.Component {
     render() {
@@ -32,7 +32,7 @@ class ShowCard extends React.Component {
 						<div className="d-flex justify-content-between">
                         <ul className="list-group list-group-flush show-times">Upcoming Shows
                         {show.dates.map((date) => <li className="single-time">{moment(date).format('LL LT')}</li> )}
-                           
+
                             {/* <li className="list-group-item">{show.dates.map((date) => moment(date).format('LT,  '))}</li> */}
                         </ul>
 							{/* <p className="show-time">{moment(show.showDateTime).format('LT')}</p> */}
