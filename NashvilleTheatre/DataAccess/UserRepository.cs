@@ -116,7 +116,6 @@ namespace NashvilleTheatre.DataAccess
                        SET
                             TotalCredits = @credits,
                             SubscriptionId = @subId,
-                            UserTypeId = 1
                         WHERE [Uid] = @uid
                         ";
 
