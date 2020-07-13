@@ -74,9 +74,6 @@ namespace NashvilleTheatre.Controllers
             }
         }
 
-
-
-
         [HttpGet("search/{searchTerm}")]
         public IActionResult Search(string searchTerm)
         {

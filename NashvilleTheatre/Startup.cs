@@ -59,6 +59,7 @@ namespace NashvilleTheatre
             services.AddTransient<SubscriptionRepository>();
             services.AddTransient<TheatreCoRepository>();
             services.AddTransient<UserRepository>();
+            services.AddTransient<CartRepository>();
             services.AddSingleton<IConfiguration>(Configuration);
         }
 
@@ -77,8 +78,6 @@ namespace NashvilleTheatre
             app.UseAuthentication();
 
             app.UseCors("ItsAllGood");
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
