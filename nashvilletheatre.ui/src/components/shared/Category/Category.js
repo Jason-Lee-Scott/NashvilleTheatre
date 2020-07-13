@@ -1,5 +1,5 @@
 import React from 'react';
-import { getCategorySummary } from '../../../helpers/data/CategoryData';
+import { getCategorySummary } from '../../../helpers/data/categoryData';
 import CategoryDropdown from './CategoryDropdown';
 
 

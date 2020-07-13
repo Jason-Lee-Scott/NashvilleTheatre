@@ -3,7 +3,7 @@ import showData from '../../../helpers/data/showData';
 import Show from '../../shared/Show/Show';
 import AllShows from '../../shared/AllShows/AllShows';
 import tragedy from '../../../images/tragedy.jpg'
-import './searchResults.scss';
+import './SearchResults.scss';
 
 class SearchResults extends React.Component {
   state = {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { getTotalCredits, getAllTheatreCoTotalSalesByMonth } from '../../../helpers/data/TheatreData';
+import { getTotalCredits, getAllTheatreCoTotalSalesByMonth } from '../../../helpers/data/theatreData';
 
 import MonthlySales from './MonthlySales';
 import TotalCredits from './TotalCredits';

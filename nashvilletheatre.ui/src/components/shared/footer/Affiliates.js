@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getAllTheatres } from '../../../helpers/data/TheatreData';
+import { getAllTheatres } from '../../../helpers/data/theatreData';
 import './footer.scss';
 
 class Affiliates extends React.Component {

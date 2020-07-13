@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 
 import SearchResults from '../components/pages/SearchResults/SearchResults';
-import Navbar from '../components/shared/Navbar/navbar';
+import Navbar from '../components/shared/Navbar/Navbar';
 import Home from '../components/pages/Home/Home';
 import Login from '../components/pages/Login/Login';
 import Register from '../components/pages/Register/Register';
@@ -19,8 +19,9 @@ import Theatre from '../components/pages/Theatre/Theatre';
 import Venue from '../components/pages/Venue/Venue';
 import Account from '../components/pages/Account/Account';
 import Footer from '../components/shared/Footer/Footer';
-import './App.scss';
 import SellerDashboard from '../components/pages/SellerDashboard/SellerDashboard';
+import Cart from '../components/pages/Cart/Cart';
+import './App.scss';
 
 // was able to remove this because a public route
 // const PublicRoute = ({ component: Component, authed, ...rest }) => {
@@ -76,6 +77,7 @@ class App extends React.Component {
             <Route path="/account/theatreco" component={SellerDashboard} authed={authed} />
             <PrivateRoute path="/account" component={Account} authed={authed} handleAuth={this.handleAuthChange} />
             <Route path="/search/:searchTerm" exact component={SearchResults} authed={authed} />
+            <Route path="/cart/:uid" exact component={Cart} authed={authed} />
             {/* <PrivateRoute path="/theatre/:theatreId/show/new" exact component={ShowForm} />
             <PrivateRoute path="/theatre/:theatreId/show/:showId/edit" exact component={ShowForm} /> */}
           </Switch>
