@@ -6,6 +6,7 @@ import SingleSubscription from '../SingleSubscription/SingleSubscription';
 
 import './AllSubscriptions.scss';
 
+
 class AllSubscriptions extends React.Component {
   state = {
     subscriptions: []
@@ -20,14 +21,17 @@ class AllSubscriptions extends React.Component {
     const { subscriptions } = this.state;
     const single = subscriptions.map((subscription) => <SingleSubscription key={subscription.subscriptionId} subscription={subscription} />)
     return (
-      <div className="AllSubscriptions">
-        <h3 className="subscribe-header">GET ALL ACCESS PASS TO NASHVILLE THEATRE</h3>
-        <h5 className="subscribe-subheader">Subscribe Today!</h5>
-        <div className="d-flex align-content-center single-subscript-group">
-          {single}
-        </div>
-        <h4 className="theatre-login">Are you a Theatre or a venue? <Link to="">Click here</Link></h4>
+      <section>
+        <div className="AllSubscriptions align-content-center text-center">
+          <h2 className="title">Get All Access to Nashville Theatre!</h2>
+          <h3 className="subtext light">Subscribe Today!</h3>
+          <div className="d-flex flex-wrap justify-content-center">
+            {single}
+          </div>
+          <h4 className="theatre-login">Are you a Theatre or a venue? <Link to="">Click here</Link></h4>
       </div>
+      </section>
+
     )
   }
 }

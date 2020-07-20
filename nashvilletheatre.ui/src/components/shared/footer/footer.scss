@@ -1,6 +1,9 @@
 @import '../../../styles/variables';
 footer {
   font-weight: 300;
+  position: relative;
+  bottom: 0;
+  width: 100%;
   h3 {
     font-weight: 700;
   }

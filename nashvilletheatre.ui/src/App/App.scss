@@ -1,0 +1,71 @@
+@import '../styles/variables';
+@import '~bootstrap/dist/css/bootstrap.min.css';
+.App {
+  position: relative;
+  min-height: 100vh;
+  .content {
+    min-height: 100vh; /* will cover the 100% of viewport */
+    overflow: hidden;
+    display: block;
+    position: relative;
+  }
+
+body {
+  margin: 0;
+  font-family: $text;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  p {
+    margin: 0;
+  }
+}
+section {
+  border-top: 1px solid #efefef;
+}
+h1 {
+  font-size: $h1;
+  font-weight:$bold;
+}
+h2 {
+  font-size:$h2;
+}
+h3 {
+  font-size:$h3;
+}
+h4 {
+  font-size:$h4;
+  font-weight:$light;
+}
+p {
+  font-size:$para;
+  font-weight: $light;
+}
+
+
+*.title {
+  color:$mainRed;
+}
+*.subtext{
+  font-style:italic;
+  font-weight:$medium;
+}
+.button-1 {
+  background-color: $mainRed;
+  border-radius: 100px;
+  padding: 5px 60px;
+  border: none;
+  font-size:20px;
+  color:$white;
+  font-weight:$light;
+  &:hover{
+    background-color: $hollywood;
+  }
+  transition: background-color 500ms;
+}
+Footer {
+  font-family: $text;
+  width:100%;
+  bottom: 0;
+}
+
+}

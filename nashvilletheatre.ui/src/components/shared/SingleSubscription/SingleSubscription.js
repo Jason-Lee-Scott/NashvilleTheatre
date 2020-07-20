@@ -6,16 +6,23 @@ class SingleSubscription extends React.Component {
   render() {
     const { subscription } = this.props;
     return (
-      <div className="SingleSubscription d-flex flex-column flex-center" id={subscription.subscriptionName} >
-        <div className="ss-color"><div className="clip-circle-top"></div></div>
-        <div className="text-center ticketNugget">
-          <h4>{subscription.subscriptionName}</h4>
-          <h1>${subscription.price}</h1>
-          <h5>per month</h5>
-          <p>See {subscription.credits} shows a month at any Nashville Theatre affiliated company</p>
-          <button className="btn btn-danger subscribe-button expanded">SIGN UP</button>
+      <div>
+        <svg height="0" width="0">
+          <defs>
+            <clipPath id="vertTicket">
+              <path d="M199.4,0c0,24.8-22.1,47.9-49.4,47.9S100.6,24.8,100.6,0H0V500H100.6c0-24.8,22.1-47.9,49.4-47.9s49.4,23.1,49.4,47.9H300V0Z"/>
+            </clipPath>
+          </defs>
+        </svg>
+        <div className="SingleSubscription clip-tix" id={subscription.subscriptionName} >
+          <div className="text-center ticketNugget">
+            <h3>{subscription.subscriptionName}</h3>
+            <h1 className="title">${subscription.price}</h1>
+            <h5>/month</h5>
+            <p>See {subscription.credits} shows a month at any Nashville Theatre affiliated company</p>
+            <button className="button-1">SUBSCRIBE</button>
+          </div>
         </div>
-        <div className="ss-color"><div className="clip-circle-bottom"></div></div>
       </div>
     )
   }

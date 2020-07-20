@@ -5,12 +5,12 @@ class Cart extends React.Component {
   render() {
     const { item } = this.props
     return (
-      <div className="LineItem">
-         <tr>
-            <td>{item.name}</td>
-            <td>{item.name}</td>
-         </tr>
-      </div>
+      <tr>
+          <td>{item.itemName}</td>
+          <td>{item.showDateTime}</td>
+          <td>{item.quantity}</td>
+          <td>{item.itemPrice}</td>
+      </tr>
     );
   }
 }

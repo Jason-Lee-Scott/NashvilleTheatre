@@ -1,65 +1,48 @@
 @import '../../../styles/variables';
 
 .SingleSubscription {
-  margin:  2% 3%;
-  min-width: 20%;
+  display: inline-block;
+  margin:  20px 20px 50px;
+  height: 100%;
+  width: 100%;
+  padding: 65px 0;
   color: $black;
   overflow: hidden;
-  h1 {
-    font-size: 4em;
-    color: $mainRed;
-  }
-  h4 {
-    font-weight: bold;
-    text-transform: capitalize !important;
-  }
-  p {
-    font-size: 14px;
-    color:$black;
-  }
-  .clip-circle-top {
-    width: 70%;
-    height: 84px;
-    border-radius: 100% 100% 100%;
-    background-color: $white;
-    margin-top:-10%;
-    transform: translate(20%, -40%);
-  }
-  .clip-circle-bottom {
-    width: 70%;
-    height: 84px;
-    border-radius: 100% 100% 100%;
-    background-color: $white;
-    margin-top: 0;
-    transform: translate(20%, 60%);
-  }
-  h1, h4, h6, p {
-    padding: 2% 6%;
-    margin: 0 6%;
-  }
   .ticketNugget {
+    width: 300px;
     background-color: $white;
-    margin: 1% 0;
-    padding: 5px;
-  }
-  .subscribe-button{
-    margin: 5% 0;
-    width: 90%;
+    padding: 10px 5px;
+    margin: 0;
+    h1 {
+      font-size: $h2;
+      font-weight: $light;
+      margin-bottom: 0;
+    }
+    h2 {
+      font-weight: bold;
+      text-transform: capitalize !important;
+    }
+    h5 {
+      margin-top: 0;
+    }
+    button {
+      margin: 20px 0;
+    }
   }
 }
-
 #Community {
   background-color: $community;
 }
-
 #Indie {
   background-color: $indie;
 }
-
 #Broadway {
   background-color: $broadway;
 }
-
 #Hollywood {
   background-color: $hollywood;
+}
+
+.clip-tix {
+  clip-path: url(#vertTicket);
 }

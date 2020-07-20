@@ -7,4 +7,16 @@ const getUsersCart = (uid) => new Promise((resolve, reject) => {
     .catch(error => reject(error))
 });
 
-export { getUsersCart };
+const getUsersCartId = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/api/cart/user/${uid}`)
+    .then((result) => resolve(result.data))
+    .catch(error => reject(error))
+});
+
+const getLineItems = (id) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/api/lineitem/cart/${id}`)
+  .then((result) => resolve(result.data))
+  .catch(error => reject(error))
+});
+
+export { getUsersCartId, getLineItems, getUsersCart };

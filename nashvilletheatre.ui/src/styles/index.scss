@@ -1,17 +1,2 @@
 @import './variables';
 @import '~bootstrap/dist/css/bootstrap.min.css';
-
-body {
-  margin: 0;
-  font-family: $text;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  p {
-    margin: 0;
-  }
-}
-Footer {
-  font-family: $text;
-  width:100%;
-  bottom: 0;
-}

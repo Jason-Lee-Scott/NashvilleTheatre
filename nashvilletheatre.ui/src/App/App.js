@@ -66,6 +66,7 @@ class App extends React.Component {
       <div className="App">
         <Router>
           <Navbar handleAuth={this.handleAuthChange} />
+        <div className="content">
           <Switch>
             <Route path="/" exact component={Home} authed={authed} />
             <Route path="/login" exact component={Login} authed={authed} handleAuth={this.handleAuthChange} />
@@ -81,6 +82,8 @@ class App extends React.Component {
             {/* <PrivateRoute path="/theatre/:theatreId/show/new" exact component={ShowForm} />
             <PrivateRoute path="/theatre/:theatreId/show/:showId/edit" exact component={ShowForm} /> */}
           </Switch>
+        </div>
+
           <Footer />
         </Router>
       </div>
