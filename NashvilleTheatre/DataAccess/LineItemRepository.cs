@@ -1,35 +1,80 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using Dapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
+using NashvilleTheatre.Models;
 
 namespace NashvilleTheatre.DataAccess
 {
-    // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
     public class LineItemRepository
     {
-        private readonly RequestDelegate _next;
-
-        public LineItemRepository(RequestDelegate next)
+        string ConnectionString;
+        public LineItemRepository(IConfiguration config)
         {
-            _next = next;
+            ConnectionString = config.GetConnectionString("NashvilleTheatre");
         }
 
-        public Task Invoke(HttpContext httpContext)
+        public LineItem GetALineItem(int id)
         {
+            var sql = "SELECT * FROM LineItem WHERE LineItemId = @id";
 
-            return _next(httpContext);
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var parameters = new { Id = id };
+                var lineItem = db.QueryFirstOrDefault<LineItem>(sql, parameters);
+                return lineItem;
+            }
         }
-    }
 
-    // Extension method used to add the middleware to the HTTP request pipeline.
-    public static class LineItemRepositoryExtensions
-    {
-        public static IApplicationBuilder UseMiddlewareClassTemplate(this IApplicationBuilder builder)
+        public List<LineItem> GetLineItemsByCartId(int id)
         {
-            return builder.UseMiddleware<LineItemRepository>();
+            var sql = @"SELECT CartId, LineItemId, LineItemType, ProductId, Quantity, DateAdded
+                        FROM LineItem
+                        JOIN LineItemType ON LineItemType.LineItemTypeId = LineItem.LineItemTypeId
+                        WHERE[CartId] = @id";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var parameters = new { Id = id };
+                var result = db.Query<LineItem>(sql, parameters).ToList();
+                return result;
+            }
+        }
+
+        public ShowLineItem GetShowLineItems(int id)
+        {
+            var sql = @"SELECT ShowName AS ItemName, ShowDateTime, ShowCost AS ItemPrice, LineItemId, Quantity
+                        FROM ShowDateTime
+                        JOIN Show ON Show.ShowId = ShowDateTime.ShowId
+                        JOIN LineItem ON LineItem.ProductId = ShowDateTime.ShowDateTimeId
+                        WHERE ShowDateTimeId = @id";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var parameters = new { Id = id };
+                var lineItem = db.QueryFirst <ShowLineItem> (sql, parameters);
+                return lineItem;
+            }
+        }
+
+        public SubscriptionLineItem GetSubscriptionLineItem(int id)
+        {
+            var sql = @"SELECT SubscriptionName AS ItemName, Price AS ItemPrice, LineItemId, Quantity
+                        FROM Subscription
+                        JOIN LineItem ON LineItem.ProductId = Subscription.SubscriptionId
+                        WHERE SubscriptionId = @id";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var parameters = new { Id = id };
+                var lineItem = db.QueryFirst <SubscriptionLineItem> (sql, parameters); ;
+                return lineItem;
+            }
         }
     }
 }

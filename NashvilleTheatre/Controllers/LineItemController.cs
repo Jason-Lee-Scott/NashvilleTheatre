@@ -3,44 +3,67 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using NashvilleTheatre.DataAccess;
+using NashvilleTheatre.Models;
 
 namespace NashvilleTheatre.Controllers
 {
-    [Route("api/[controller]")]
-    public class LineItemController : Controller
+    [Route("api/lineitem")]
+    public class LineItemController : ControllerBase
     {
-        // GET: api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
+
+        LineItemRepository _lineItemRepository;
+        public LineItemController(LineItemRepository repository)
         {
-            return new string[] { "value1", "value2" };
+            _lineItemRepository = repository;
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET: api/lineitem/cart/{id}
+        [HttpGet("cart/{id}")]
+        public IActionResult GetLineItemsByCartId(int id)
         {
-            return "value";
+            var lineItems = _lineItemRepository.GetLineItemsByCartId(id);
+
+            return Ok(lineItems);
+            
         }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
+        // GET: api/lineitem/shows/cart/{id}
+        [HttpGet("shows/cart/{id}")]
+        public IActionResult GetShowLineItemsByCartId(int id)
         {
+            var lineItems = _lineItemRepository.GetLineItemsByCartId(id);
+            var shows = new List<ShowLineItem>();
+            foreach (LineItem item in lineItems)
+            {
+                if (item.LineItemType == "Show")
+                {
+                    ShowLineItem show = _lineItemRepository.GetShowLineItems(item.ProductId);
+                    shows.Add(show);
+                }
+            }
+            return Ok(shows);
+
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // GET: api/lineitem/subscriptions/cart/{id}
+        [HttpGet("subscriptions/cart/{id}")]
+        public IActionResult GetSubscriptionLineItem(int id)
         {
+            var lineItems = _lineItemRepository.GetLineItemsByCartId(id);
+            var subscriptions = new List<SubscriptionLineItem>();
+
+            foreach (LineItem item in lineItems)
+            {
+                if (item.LineItemType == "Subscription")
+                {
+                    SubscriptionLineItem subscription = _lineItemRepository.GetSubscriptionLineItem(item.ProductId);
+                    subscriptions.Add(subscription);
+                }
+            }
+
+            return Ok(subscriptions);
         }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

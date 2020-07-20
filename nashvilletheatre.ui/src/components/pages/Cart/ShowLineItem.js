@@ -1,6 +1,6 @@
 import React from 'react'
 
-class Cart extends React.Component {
+class ShowLineItem extends React.Component {
 
   render() {
     const { item } = this.props
@@ -14,4 +14,4 @@ class Cart extends React.Component {
     );
   }
 }
-export default Cart;
+export default ShowLineItem;

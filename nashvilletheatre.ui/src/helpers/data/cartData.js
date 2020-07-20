@@ -19,4 +19,22 @@ const getLineItems = (id) => new Promise((resolve, reject) => {
   .catch(error => reject(error))
 });
 
-export { getUsersCartId, getLineItems, getUsersCart };
+const getShowLineItems = (id) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/api/lineitem/shows/cart/${id}`)
+  .then((result) => resolve(result.data))
+  .catch(error => reject(error))
+});
+
+const getSubscriptionLineItems = (id) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/api/lineitem/subscriptions/cart/${id}`)
+  .then((result) => resolve(result.data))
+  .catch(error => reject(error))
+});
+
+export {
+  getUsersCartId,
+  getLineItems,
+  getUsersCart,
+  getShowLineItems,
+  getSubscriptionLineItems
+};

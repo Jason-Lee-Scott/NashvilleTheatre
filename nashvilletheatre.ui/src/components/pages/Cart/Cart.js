@@ -1,52 +1,60 @@
 import React from 'react'
-import LineItem from './LineItem';
-import { getUsersCartId, getLineItems, getUsersCart } from '../../../helpers/data/cartData';
+import ShowLineItem from './ShowLineItem';
+import SubscriptionLineItem from './SubscriptionLineItem';
+import { getUsersCartId, getShowLineItems, getSubscriptionLineItems } from '../../../helpers/data/cartData';
+
+import './Cart.scss';
 
 class Cart extends React.Component {
   state = {
-    cart: {
-      cartCreationDate: "2020-07-18T00:00:00-05:00",
-      cartId: 1,
-      showLineItem: [
-        {
-        itemName: "Who's Afraid of Virginia Woolf",
-        itemPrice: 15,
-        lineItemId: 1,
-        quantity: 1,
-        showDateTime: "2020-08-08T19:30:00"
-        }
-      ],
-      subscriptionLineItem: [],
-      total: 15,
-      uid: 1
-    }
+    cartId: null,
+    shows: [],
+    subscriptions:[],
   }
-
-
 
   componentDidMount() {
     const { uid } = this.props.match.params;
-    // getUsersCartId(uid)
-    // .then((cartId) => {
-    //   this.setState({ cartId: cartId })
-    //   getLineItems(cartId)
-    //     .then((lineItems) => {
-    //       this.setState({lineItems:lineItems})
-    //     });
-    //   });
-      getUsersCart(uid)
-      .then(cart => this.setState({ cart : cart })
-      )
-    }
+    getUsersCartId(uid)
+    .then((cartId) => {
+      this.setState({ cartId: cartId })
+      getSubscriptionLineItems(cartId)
+        .then((subscriptions) => {
+          this.setState({subscriptions:subscriptions})
+          getShowLineItems(cartId)
+            .then((shows) => {
+              this.setState({shows:shows})
+        })
+      })
+    })
+  };
 
   render() {
-    const { cart } = this.state;
-    const lineItemListing = cart.showLineItem.map((item) => <LineItem key={item.itemId} item={item}/>)
+    const { cartId, shows, subscriptions } = this.state;
+    const showItemListing = shows.map((item) => <ShowLineItem key={item.itemId} item={item}/>)
+    const subscriptionItemListing = subscriptions.map((item) => <SubscriptionLineItem key={item.itemId} item={item}/>)
     return (
       <div className="cart-container">
-        <h1 className="text-center">Cart {cart.cartId}</h1>
+        <h1 className="text-center">Cart {cartId}</h1>
         <div className="line-items">
-        {lineItemListing
+        {subscriptionItemListing.length > 0
+        ?<div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Subscription</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {subscriptionItemListing}
+          </tbody>
+        </table>
+        </div>
+        :null
+        }
+        {shows.length > 0
         ?<div>
         <table class="table">
           <thead>
@@ -58,14 +66,18 @@ class Cart extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {lineItemListing}
+            {showItemListing}
           </tbody>
         </table>
-        <button type="button" className="button-1" onClick={() => {}}>CHECKOUT</button>
         </div>
-        :<h1>Your Cart is Empty</h1>
+
+        :<div>
+          <h2 className="text-center">Now Shows In Your Cart.</h2>
+          <h4 className="text-center subtext">Let's find some</h4>
+        </div>
         }
         </div>
+        <button type="button" className="button-1" onClick={() => {}}>CHECKOUT</button>
       </div>
     );
   }

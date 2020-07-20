@@ -19,14 +19,26 @@ namespace NashvilleTheatre.DataAccess
             ConnectionString = config.GetConnectionString("NashvilleTheatre");
         }
 
-        public IEnumerable<Cart> GetUsersCart(int uid)
+        public int GetUsersCartId(int uid)
         {
-            var sql = "SELECT * FROM [Cart] WHERE [Uid] = @uid";
+            var sql = "SELECT [CartId] FROM [Cart] WHERE [Uid] = @uid";
 
             using(var db = new SqlConnection(ConnectionString))
             {
                 var parameters = new { Uid = uid };
-                var result = db.Query<Cart>(sql, parameters);
+                var result = db.QueryFirst<int>(sql, parameters);
+                return result;
+            }
+        }
+
+        public int GetUsersCart(int uid)
+        {
+            var sql = "SELECT * FROM [Cart] WHERE [Uid] = @uid";
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var parameters = new { Uid = uid };
+                var result = db.QueryFirst<int>(sql, parameters);
                 return result;
             }
         }

@@ -60,6 +60,7 @@ namespace NashvilleTheatre
             services.AddTransient<TheatreCoRepository>();
             services.AddTransient<UserRepository>();
             services.AddTransient<CartRepository>();
+            services.AddTransient<LineItemRepository>();
             services.AddSingleton<IConfiguration>(Configuration);
         }
 
